@@ -108,3 +108,15 @@ describe("Inscripciones", () => {
     expect((await call("POST", "/api/me/inscripciones", { role: "mvz" })).status).toBe(400);
   });
 });
+
+describe("Ajustes de la vista del alumno en CourseDetail (hallazgo 4)", () => {
+  it("expone enfoque sin los ajustes sensibles y refleja el cambio del administrador", async () => {
+    const a = await get("/api/cursos/oftalmologia");
+    expect(a.body.ajustes).toEqual({ enfoque: false });
+    await admin.patch("/academia/ajustes", { enfoque: true });
+    const b = await get("/api/cursos/oftalmologia");
+    expect(b.body.ajustes).toEqual({ enfoque: true });
+    expect(b.body.ajustes).not.toHaveProperty("ocultar");
+    expect(b.body.ajustes).not.toHaveProperty("adminSinInsc");
+  });
+});

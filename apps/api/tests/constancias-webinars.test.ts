@@ -80,12 +80,32 @@ describe("Webinars", () => {
   it("valida fecha futura, umbral, dirección repetida y enlace de YouTube", async () => {
     expect((await admin.post("/webinars", { ...nuevo, fecha: "2026-01-01" })).status).toBe(400);
     expect((await admin.post("/webinars", { ...nuevo, umbral: 100 })).status).toBe(400);
-    expect((await admin.post("/webinars", { ...nuevo, slug: "proximo" })).status).toBe(409);
+    /* "proximo" es un slug reservado: ahora es error de validación (400), antes 409 (dictamen QA, hallazgo 8). */
+    expect((await admin.post("/webinars", { ...nuevo, slug: "proximo" })).status).toBe(400);
+    expect((await admin.post("/webinars", { ...nuevo, slug: "ejemplo-2026-11-12" })).status).toBe(409);
     expect((await admin.post("/webinars", { ...nuevo, modo: "youtube", youtube: "https://example.com" })).status).toBe(400);
     expect((await admin.post("/webinars", { ...nuevo, flyer: "data:image/gif;base64,R0lGOD" })).status).toBe(400);
     const yt = await admin.post("/webinars", { ...nuevo, slug: "con-youtube", modo: "youtube", youtube: "https://youtu.be/7cYE999nfe8" });
     expect(yt.status).toBe(201);
     expect((await mvz.get("/webinars/con-youtube")).body.youtube).toBe("https://youtu.be/7cYE999nfe8");
+  });
+
+  it("asistentes del historial de ejemplo por slug estable (no por título)", async () => {
+    const h = (await admin.get("/webinars")).body.historial;
+    expect(h.map((x: { slug: string }) => x.slug)).toEqual(["proximo", "ejemplo-2026-11-12", "ejemplo-2026-10-22"]);
+    const a = await admin.get("/webinars/ejemplo-2026-11-12/asistentes");
+    expect(a.status).toBe(200);
+    expect(a.body).toContain("MVZ Paola Ruiz");
+    /* Buscar por título ya no funciona. */
+    expect((await admin.get(`/webinars/${encodeURIComponent("Webinar anterior · ejemplo 1")}/asistentes`)).status).not.toBe(200);
+    expect((await admin.get("/webinars/no-existe/asistentes")).status).toBe(404);
+  });
+
+  it("GET /api/webinars/proximo sigue devolviendo NextWebinar (excepción del contrato)", async () => {
+    const n = await get("/api/webinars/proximo");
+    expect(n.body).toHaveProperty("startsAt");
+    expect(n.body).not.toHaveProperty("slug");
+    expect((await get("/api/webinars")).body[0].slug).toBe("proximo");
   });
 
   it("un webinar en borrador no es público", async () => {

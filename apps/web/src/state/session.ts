@@ -69,6 +69,13 @@ export const session = {
     go("/");
     toast("Sesión cerrada");
   },
+  /* "Salir" desde cualquier pantalla (encabezado, menú móvil, administrador). Primero sale de /panel o /admin y en el
+     siguiente ciclo cierra la sesión: si se cierra antes, RequireRole volvería a iniciarla (ensureRole). */
+  signOut(): void {
+    if (!navigator) return session.logout();
+    go("/");
+    setTimeout(() => session.logout(), 0);
+  },
   setLang(lang: Lang): void {
     patch({ lang });
   },

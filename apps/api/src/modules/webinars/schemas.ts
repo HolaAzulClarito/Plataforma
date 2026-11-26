@@ -14,7 +14,8 @@ export const WebinarCreateBody = z
     hora: z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/),
     duracion: z.union([z.literal(60), z.literal(90), z.literal(120)]),
     umbral: z.number().int().min(1).max(120),
-    slug: slug.max(60),
+    /* "proximo" está reservado (GET /api/webinars/proximo devuelve NextWebinar). */
+    slug: slug.max(60).refine((x) => x !== "proximo", { message: 'La dirección "proximo" está reservada para el próximo webinar' }),
     modo: z.enum(["cloudflare", "youtube"]),
     youtube: text(300).optional(),
     publicado: z.boolean(),

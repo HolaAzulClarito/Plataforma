@@ -170,7 +170,7 @@ function UserMenu() {
           type="button"
           onClick={() => {
             close();
-            session.logout();
+            session.signOut();
           }}
         >
           <Icon name="log-out" /> {t("Cerrar sesión")}
@@ -240,7 +240,7 @@ function MobileNav({ open, onClose }: { open: boolean; onClose: () => void }) {
           style={{ marginTop: 18 }}
           onClick={() => {
             onClose();
-            session.logout();
+            session.signOut();
           }}
         >
           <Icon name="log-out" /> {t("Cerrar sesión")}

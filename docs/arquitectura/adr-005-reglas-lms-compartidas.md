@@ -15,6 +15,10 @@ En el demo, el navegador califica el examen y decide si se emite la constancia. 
   2. El precio es informativo. El acceso lo da únicamente una inscripción `approved`.
   3. Constancia = todas las lecciones al 100 % **y** examen final aprobado.
   4. Intentos = los del examen (0 = sin límite) + adicionales autorizados por la administración.
+  5. Aprobado = nota final según la regla de cálculo del examen alcanza la aprobatoria (propuesto en ADR-006).
+
+### Caso válido: curso de solo examen final (`lessons: 1`)
+`Course.lessons` cuenta las lecciones **más** el examen final, así que `lessons: 1` significa 0 lecciones y solo el examen final (p. ej. `simposio-parasitologia-cardiologia`). Es intencional: `lessonCount` devuelve 0, `courseModules` devuelve `[]`, el examen se abre al inscribirse y la constancia solo exige aprobarlo. No se debe "corregir" el cálculo con `Math.max(1, ...)`. Está cubierto por `lms.v26.test.ts` y por los tests de examen de la API.
 
 ## Consecuencias
 - Se corrigen los textos que hablaban de examen por módulo (chatbot y examen de ejemplo).

@@ -1,7 +1,7 @@
 /* Webinars (adminWebinars, APP.webinarNew/webinarSave, APP.webinarStream, APP.attendees). */
 import { useCallback, useEffect, useState, type FormEvent } from "react";
 import { Link } from "react-router";
-import { slugify, todayIso, youtubeId, type AdminWebinar, type AdminWebinarList, type WebinarCreateRequest, type WebinarHistoryRow, type WebinarMode } from "@kiron/shared";
+import { csvDocument, slugify, todayIso, youtubeId, type AdminWebinar, type AdminWebinarList, type WebinarCreateRequest, type WebinarHistoryRow, type WebinarMode } from "@kiron/shared";
 import { Icon } from "../../components/Icon";
 import { ApiStatus, Notice } from "../../components/ui";
 import { useT } from "../../i18n";
@@ -111,7 +111,8 @@ function WebinarForm({ taken }: { taken: string[] }) {
     else if (new Date(`${w.fecha}T${w.hora}:00-06:00`).getTime() <= Date.now()) msg = "La fecha y la hora tienen que ser futuras.";
     else if (!(umbral >= 1 && umbral <= duracion)) msg = "Los minutos para contar asistencia van de 1 a la duración del webinar.";
     else if (!s) msg = "Escribe la dirección de la landing.";
-    else if (s === "proximo" || taken.includes(s)) msg = "Ya existe un webinar con esa dirección; cámbiala.";
+    else if (s === "proximo") msg = 'La dirección "proximo" está reservada para el próximo webinar; usa otra.';
+    else if (taken.includes(s)) msg = "Ya existe un webinar con esa dirección; cámbiala.";
     else if (modo === "youtube" && !youtubeId(w.youtube)) msg = "Pega un enlace válido de YouTube (youtube.com/live/…, youtu.be/… o watch?v=…).";
     if (msg) {
       setErr(msg);
@@ -314,7 +315,8 @@ function Attendees({ row }: { row: WebinarHistoryRow }) {
   useEffect(load, [load]);
   const exportList = () => {
     if (!list) return;
-    downloadText(`asistentes-${row.slug}.csv`, "\uFEFF" + ["Nombre", ...list.map((n) => `"${n.replace(/"/g, '""')}"`)].join("\n") + "\n", "text/csv;charset=utf-8");
+    /* csvDocument escapa comillas y neutraliza f\u00F3rmulas (=, +, -, @) para Excel. */
+    downloadText(`asistentes-${row.slug}.csv`, csvDocument([["Nombre"], ...list.map((n) => [n])]), "text/csv;charset=utf-8");
     toast("Lista descargada");
   };
   return (
@@ -347,7 +349,7 @@ function Attendees({ row }: { row: WebinarHistoryRow }) {
 export function WebinarsPage() {
   const t = useT();
   const { data, loading, error, refetch } = useAdminApi<AdminWebinarList>("/admin/webinars");
-  const taken = data?.nuevos.map((w) => w.slug) ?? [];
+  const taken = [...(data?.nuevos ?? []), ...(data?.historial ?? [])].map((w) => w.slug);
   return (
     <>
       <MainHead
@@ -405,7 +407,7 @@ export function WebinarsPage() {
                 </tr>
               ))}
               {data.historial.map((w) => (
-                <tr key={w.titulo}>
+                <tr key={w.slug}>
                   <td>
                     <b style={{ color: "var(--web-navy)" }}>{w.titulo}</b>
                   </td>
@@ -423,8 +425,8 @@ export function WebinarsPage() {
                         </Link>{" "}
                       </>
                     ) : null}
-                    {/* [API] Las filas de ejemplo sin slug no tienen cómo pedir sus asistentes (ver entrega). */}
-                    {w.slug && w.asistentes !== null ? (
+                    {/* Cada fila del historial tiene slug estable (datos semilla); los asistentes se piden por slug. */}
+                    {w.asistentes !== null ? (
                       <button type="button" className="mini" onClick={() => openModal({ title: `Asistentes · ${w.titulo}`, content: <Attendees row={w} />, size: "sm" })}>
                         <Icon name="users" /> {t("Ver asistentes")}
                       </button>

@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { DEMO_ROLE_HEADER } from "@kiron/shared";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { session } from "../state/session";
 import { mockFetch } from "../test/utils";
 import { ApiError, apiPost, useApi } from "./api";
@@ -44,8 +44,22 @@ describe("cliente de API", () => {
 
   it("apiPost manda JSON y lanza ApiError con el mensaje de la API", async () => {
     const calls = mockFetch({});
-    await expect(apiPost("/webinars/proximo/registro", { a: 1 })).rejects.toEqual(new ApiError("No encontrado", 404));
+    await expect(apiPost("/webinars/proximo/registro", { a: 1 })).rejects.toEqual(new ApiError("No encontrado", 404, { error: "No encontrado" }));
     expect(calls[0]!.init!.method).toBe("POST");
     expect(calls[0]!.init!.body).toBe('{"a":1}');
+  });
+});
+
+describe("ApiError conserva el cuerpo del error", () => {
+  it("expone body con campos extra (p. ej. pendientes en un 409)", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () => new Response(JSON.stringify({ error: "Con pendientes", pendientes: ["a", "b"] }), { status: 409, headers: { "Content-Type": "application/json" } })),
+    );
+    const e = await apiPost("/admin/editor/cursos/x/publicar").catch((x: unknown) => x);
+    expect(e).toBeInstanceOf(ApiError);
+    expect((e as ApiError).status).toBe(409);
+    expect((e as ApiError).message).toBe("Con pendientes");
+    expect((e as ApiError).body).toEqual({ error: "Con pendientes", pendientes: ["a", "b"] });
   });
 });

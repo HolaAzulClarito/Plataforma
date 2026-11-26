@@ -86,7 +86,7 @@ export function CursoPage() {
   const d = detail.data;
   const mine = enrs.data?.find((e) => e.s === slug);
   if (role === "mvz" && mine?.st === "approved") return <CourseView d={d} onEnrollmentLost={enrs.refetch} />;
-  if (role === "admin" && preview.data) return <AdminPreview d={preview.data} focus={!!settings?.enfoque} />;
+  if (role === "admin" && preview.data) return <AdminPreview d={preview.data} focus={!!preview.data.ajustes?.enfoque} />;
   return <Landing d={d} enr={mine} onChange={enrs.refetch} />;
 }
 
@@ -447,7 +447,8 @@ function CourseView({ d, onEnrollmentLost }: { d: CourseDetail; onEnrollmentLost
     folio: p.constancia?.folio ?? null,
     siguiente: p.siguiente,
   };
-  return <LessonView vm={vm} onProgress={setOverride} reload={progress.refetch} focus={false} />;
+  /* Modo enfoque para el médico, como en el demo (legacy app.js: focusNow = !!G.enfoque). */
+  return <LessonView vm={vm} onProgress={setOverride} reload={progress.refetch} focus={!!d.ajustes?.enfoque} />;
 }
 
 function AdminPreview({ d, focus }: { d: CourseDetail; focus: boolean }) {
@@ -576,9 +577,9 @@ function LessonView({
     if (i >= L) {
       if (adminPrev) {
         setSel(-1);
-        return toast("Vista de administrador: los exámenes se revisan desde el editor del curso");
+        return toast("Vista de administrador: el examen final se revisa desde el editor del curso");
       }
-      if (examen?.estado === "bloqueado") return toast("Termina todas las lecciones para presentar el examen final");
+      if (examen?.estado === "bloqueado") return toast(examen.motivo || "Termina todas las lecciones para presentar el examen final");
       setSel(-1);
       if (examen && !passed) openExam(slug, examen, () => reload?.());
       return;

@@ -8,6 +8,9 @@ import { Switch, useAction, useAdminApi } from "../common";
 
 type BoolKey = { [K in keyof AcademySettings]: AcademySettings[K] extends boolean ? K : never }[keyof AcademySettings];
 
+/* Ajustes que se guardan pero el servidor todavía no aplica: se muestran deshabilitados como "Próximamente". */
+const SOON: ReadonlySet<BoolKey> = new Set<BoolKey>(["expira"]);
+
 const SWITCHES: Array<[BoolKey, string, string]> = [
   ["enfoque", "Modo enfoque", "Oculta el menú y el pie de página mientras el alumno toma la lección."],
   ["resumen", "Resumen del contenido", "Muestra el temario resumido en la página del curso antes de inscribirse."],
@@ -48,20 +51,31 @@ export function AjustesTab() {
             <div>
               <b>{t("Avance de lección")}</b>
               <small>{t("La lección se completa sola al reproducir el 100 % del video. El alumno no puede marcarla a mano y no existe ninguna función que lo permita.")}</small>
+              {/* El porcentaje configurable (ajuste "pct") se guarda pero el servidor siempre exige 100 %. */}
+              <small>{t("Porcentaje configurable: Próximamente. Hoy siempre es 100 %.")}</small>
             </div>
-            <span className="badge badge-ok">
-              <Icon name="lock" /> {t("100 % del video")}
+            <span style={{ display: "inline-flex", gap: 6, flexWrap: "wrap", justifyContent: "flex-end" }}>
+              <span className="badge badge-ok">
+                <Icon name="lock" /> {t("100 % del video")}
+              </span>
+              <span className="badge badge-soft">{t("Próximamente")}</span>
             </span>
           </div>
-          {SWITCHES.map(([k, title, desc]) => (
-            <div className="set-row" key={k}>
-              <div>
-                <b id={`gs-${k}`}>{t(title)}</b>
-                <small>{t(desc)}</small>
+          {SWITCHES.map(([k, title, desc]) => {
+            const soon = SOON.has(k);
+            return (
+              <div className="set-row" key={k}>
+                <div>
+                  <b id={`gs-${k}`}>
+                    {t(title)} {soon ? <span className="badge badge-soft">{t("Próximamente")}</span> : null}
+                  </b>
+                  <small>{t(desc)}</small>
+                  {soon ? <small>{t("Próximamente: el servidor todavía no aplica este ajuste.")}</small> : null}
+                </div>
+                <Switch on={soon ? false : G[k]} label={title} onToggle={() => set(k, !G[k])} disabled={busy || soon} />
               </div>
-              <Switch on={G[k]} label={title} onToggle={() => set(k, !G[k])} disabled={busy} />
-            </div>
-          ))}
+            );
+          })}
         </div>
       ) : null}
     </>

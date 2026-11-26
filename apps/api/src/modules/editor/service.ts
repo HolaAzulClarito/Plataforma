@@ -64,6 +64,35 @@ const lessonOf = (c: EditorCourse, mi: number, li: number) => {
 
 const totalLessons = (c: EditorCourse) => c.modulos.reduce((t, m) => t + m.lecciones.length, 0);
 
+/* ---------- Índices posicionales ----------
+   El avance guarda índices globales de lección (done, visto) y los intentos guardan índices de pregunta calificable
+   (preguntas, ans). Si un curso ya tiene actividad, borrar o mover lo existente cambiaría a qué lección o pregunta
+   apunta cada índice, así que se bloquea con 409. Agregar al final sí se permite porque no mueve nada. */
+const isGradable = (q: EditorQuestion) => q.tipo === "om" || q.tipo === "rm" || q.tipo === "vf";
+
+const hasExamActivity = (c: EditorCourse): boolean => db().intentos.some((a) => a.s === c.slug);
+
+const hasLessonProgress = (c: EditorCourse): boolean =>
+  db().avance.some((p) => p.s === c.slug && (p.done.length > 0 || Object.keys(p.visto).length > 0));
+
+const EXAM_LOCKED = "El examen ya tiene intentos o sesiones abiertas: no se pueden borrar ni reordenar sus preguntas (cambiaría lo que respondieron). Agrega preguntas nuevas al final.";
+const LESSONS_LOCKED = "El curso ya tiene alumnos con avance: no se pueden borrar ni mover lecciones existentes (cambiaría su avance). Agrega lecciones al final del temario.";
+
+const assertExamEditable = (c: EditorCourse) => {
+  if (hasExamActivity(c)) throw conflict(EXAM_LOCKED);
+};
+
+const assertLessonsEditable = (c: EditorCourse) => {
+  if (hasLessonProgress(c)) throw conflict(LESSONS_LOCKED);
+};
+
+/* Con avance, solo se agrega en el último módulo que tiene lecciones (o después): así ningún índice existente se mueve. */
+const assertAppendOnly = (c: EditorCourse, mi: number) => {
+  if (!hasLessonProgress(c)) return;
+  const lastWithLessons = c.modulos.reduce((k, m, i) => (m.lecciones.length ? i : k), -1);
+  if (mi < lastWithLessons) throw conflict(LESSONS_LOCKED);
+};
+
 /* Slug público único entre el catálogo y el editor. */
 const uniqueSlug = (titulo: string): string => {
   const base = slugify(titulo) || "curso";
@@ -140,6 +169,18 @@ export const addModule = async (id: string, nombre?: string): Promise<EditorCour
   return detail(c);
 };
 
+/* Borra un módulo con sus lecciones. 409 si el curso se quedaría sin lecciones, o si el módulo tiene lecciones y el
+   curso ya tiene alumnos con avance (índices posicionales). Un módulo vacío siempre se puede borrar. */
+export const deleteModule = async (id: string, mi: number): Promise<EditorCourseDetail> => {
+  const c = courseOf(id);
+  const m = moduleOf(c, mi);
+  if (totalLessons(c) - m.lecciones.length < 1) throw conflict("No se puede borrar: el curso se quedaría sin lecciones");
+  if (c.modulos.length <= 1) throw conflict("El curso necesita al menos un módulo");
+  if (m.lecciones.length) assertLessonsEditable(c);
+  c.modulos.splice(mi, 1);
+  return detail(c);
+};
+
 export const renameModule = async (id: string, mi: number, nombre: string): Promise<EditorCourseDetail> => {
   const c = courseOf(id);
   moduleOf(c, mi).nombre = nombre;
@@ -149,6 +190,7 @@ export const renameModule = async (id: string, mi: number, nombre: string): Prom
 export const addLesson = async (id: string, mi: number, titulo?: string): Promise<EditorCourseDetail> => {
   const c = courseOf(id);
   const m = moduleOf(c, mi);
+  assertAppendOnly(c, mi);
   if (m.lecciones.length >= MAX_LESSONS_PER_MODULE) throw conflict(`Máximo ${MAX_LESSONS_PER_MODULE} lecciones por módulo`);
   m.lecciones.push(newLesson(titulo || `Lección ${m.lecciones.length + 1}`));
   return detail(c);
@@ -178,6 +220,7 @@ export const deleteLesson = async (id: string, mi: number, li: number): Promise<
   const c = courseOf(id);
   lessonOf(c, mi, li);
   if (totalLessons(c) <= 1) throw conflict("El curso necesita al menos una lección");
+  assertLessonsEditable(c);
   moduleOf(c, mi).lecciones.splice(li, 1);
   return detail(c);
 };
@@ -188,6 +231,7 @@ export const moveLesson = async (id: string, mi: number, li: number, dir: -1 | 1
   lessonOf(c, mi, li);
   const j = li + dir;
   if (j < 0 || j >= a.length) throw conflict("La lección ya está en el extremo del módulo");
+  assertLessonsEditable(c);
   [a[li], a[j]] = [a[j]!, a[li]!];
   return detail(c);
 };
@@ -248,7 +292,10 @@ export const normalizeQuestion = (q: EditorQuestion): EditorQuestion => {
 
 export const putQuestion = async (id: string, qi: number, q: EditorQuestion): Promise<EditorCourseDetail> => {
   const c = courseOf(id);
-  if (!c.examen.preguntas[qi]) throw notFound("Pregunta no encontrada");
+  const prev = c.examen.preguntas[qi];
+  if (!prev) throw notFound("Pregunta no encontrada");
+  /* Cambiar entre tipo calificable y no calificable mueve los índices del examen automático. */
+  if (isGradable(prev) !== isGradable(q)) assertExamEditable(c);
   c.examen.preguntas[qi] = normalizeQuestion(q);
   return detail(c);
 };
@@ -256,6 +303,7 @@ export const putQuestion = async (id: string, qi: number, q: EditorQuestion): Pr
 export const deleteQuestion = async (id: string, qi: number): Promise<EditorCourseDetail> => {
   const c = courseOf(id);
   if (!c.examen.preguntas[qi]) throw notFound("Pregunta no encontrada");
+  assertExamEditable(c);
   c.examen.preguntas.splice(qi, 1);
   return detail(c);
 };

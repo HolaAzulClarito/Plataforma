@@ -27,7 +27,7 @@ const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, 
    el avance del curso. */
 export function openExam(slug: string, st: ExamStatus, onChange: () => void): void {
   if (st.estado === "aprobado") return toast("Ya aprobaste este examen");
-  if (st.estado === "bloqueado") return toast("Termina todas las lecciones para presentar el examen final");
+  if (st.estado === "bloqueado") return toast(st.motivo || "Termina todas las lecciones para presentar el examen final");
   if (st.estado === "programado") return toast(`Este examen se abre el ${isoToMx(st.abreEl)}`);
   if (st.estado === "sin_intentos") {
     openModal({ title: "Examen final", content: <NoAttempts slug={slug} st={st} onDone={onChange} />, onClose: onChange });
@@ -41,6 +41,8 @@ export function NoAttempts({ slug, st, onDone }: { slug: string; st: ExamStatus;
   const t = useT();
   const [busy, setBusy] = useState(false);
   const pending = st.solicitud === "pendiente";
+  /* ADR-006: con la regla de cálculo, otro intento no cambiaría la nota final (p. ej. "Primer intento" reprobado). */
+  const settled = !pending && !st.puedeSolicitar;
   const request = async () => {
     setBusy(true);
     try {
@@ -58,14 +60,20 @@ export function NoAttempts({ slug, st, onDone }: { slug: string; st: ExamStatus;
       <div className="big-ok lockd">
         <Icon name="lock" />
       </div>
-      <h3 style={{ textAlign: "center", margin: "8px 0" }}>{t("Agotaste tus intentos")}</h3>
-      <p style={{ textAlign: "center", color: "var(--muted)" }}>
-        {t(`Usaste ${st.intentosUsados} de ${st.intentosMax ?? st.intentosUsados} intentos.`)}{" "}
-        {t(
-          "Terminaste las lecciones, pero sin aprobar el examen no se emite la constancia. Para presentar otra vez, la administración tiene que autorizar un intento adicional.",
-        )}
-      </p>
-      {pending ? (
+      <h3 style={{ textAlign: "center", margin: "8px 0" }}>{t(settled ? "Tu calificación final ya quedó definida" : "Agotaste tus intentos")}</h3>
+      {settled ? (
+        <p style={{ textAlign: "center", color: "var(--muted)" }}>
+          {t(st.motivo)} {t("Sin aprobar el examen final no se emite la constancia.")}
+        </p>
+      ) : (
+        <p style={{ textAlign: "center", color: "var(--muted)" }}>
+          {t(`Usaste ${st.intentosUsados} de ${st.intentosMax ?? st.intentosUsados} intentos.`)}{" "}
+          {t(
+            "Terminaste las lecciones, pero sin aprobar el examen no se emite la constancia. Para presentar otra vez, la administración tiene que autorizar un intento adicional.",
+          )}
+        </p>
+      )}
+      {settled ? null : pending ? (
         <div className="notice" style={{ marginTop: 16 }} role="status">
           <Icon name="clock" />
           <span>{t("Solicitud enviada. Te avisamos por correo cuando la autoricen.")}</span>

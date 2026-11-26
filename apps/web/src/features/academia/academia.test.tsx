@@ -173,7 +173,7 @@ describe("examen final", () => {
         "odontologia",
         [0, 1],
         2,
-        examStatus({ estado: "sin_intentos", intentosUsados: 3, intentosRestantes: 0, notaFinal: 6 }),
+        examStatus({ estado: "sin_intentos", intentosUsados: 3, intentosRestantes: 0, notaFinal: 6, puedeSolicitar: true }),
       ),
       "/api/me/cursos/odontologia/examen/solicitudes": { id: 4, u: "Dra. Laura Méndez", s: "odontologia", estado: "pendiente", f: "26/11/2026" },
     });
@@ -186,6 +186,55 @@ describe("examen final", () => {
     await waitFor(() => expect(posts(calls, "/api/me/cursos/odontologia/examen/solicitudes")).toHaveLength(1));
     await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
     expect(screen.getByText("Solicitud enviada. La administración autoriza el intento adicional.")).toBeInTheDocument();
+  });
+
+  it("ADR-006: con 'Primer intento' reprobado explica que la nota ya quedó definida y no ofrece intento adicional", async () => {
+    asMvz();
+    const motivo = 'Con la regla "Primer intento", tu calificación final ya no puede llegar a la aprobatoria.';
+    mockApi({
+      "/api/cursos/odontologia": detailOf(FREE),
+      "/api/me/inscripciones": [enrollment("odontologia", "approved")],
+      "/api/me/cursos/odontologia/progreso": progressOf(
+        "odontologia",
+        [0, 1],
+        2,
+        examStatus({ estado: "sin_intentos", intentosUsados: 1, intentosRestantes: 2, notaFinal: 0, puedeSolicitar: false, motivo }),
+      ),
+    });
+    renderApp("/academia/curso/odontologia");
+    fireEvent.click(await screen.findByRole("button", { name: /Presentar examen final/ }));
+    const dialog = screen.getByRole("dialog", { name: "Examen final" });
+    expect(within(dialog).getByText("Tu calificación final ya quedó definida")).toBeInTheDocument();
+    expect(within(dialog).getByText(/tu calificación final ya no puede llegar a la aprobatoria/)).toBeInTheDocument();
+    expect(within(dialog).queryByRole("button", { name: /Solicitar intento adicional/ })).toBeNull();
+  });
+});
+
+describe("modo enfoque (ajuste global) en la vista del médico", () => {
+  it("con enfoque activo oculta encabezado y pie y muestra la barra para salir", async () => {
+    asMvz();
+    mockApi({
+      "/api/cursos/odontologia": { ...detailOf(FREE), ajustes: { enfoque: true } },
+      "/api/me/inscripciones": [enrollment("odontologia", "approved")],
+      "/api/me/cursos/odontologia/progreso": progressOf("odontologia", []),
+    });
+    renderApp("/academia/curso/odontologia");
+    expect(await screen.findByRole("link", { name: /Salir del curso/ })).toBeInTheDocument();
+    expect(screen.getByText("Modo enfoque")).toBeInTheDocument();
+    await waitFor(() => expect(document.body).toHaveClass("ac-focus"));
+  });
+
+  it("con enfoque apagado no hay barra de enfoque", async () => {
+    asMvz();
+    mockApi({
+      "/api/cursos/odontologia": detailOf(FREE),
+      "/api/me/inscripciones": [enrollment("odontologia", "approved")],
+      "/api/me/cursos/odontologia/progreso": progressOf("odontologia", []),
+    });
+    renderApp("/academia/curso/odontologia");
+    await screen.findByRole("button", { name: "Reproducir lección" });
+    expect(screen.queryByText("Modo enfoque")).toBeNull();
+    expect(document.body).not.toHaveClass("ac-focus");
   });
 });
 

@@ -7,6 +7,8 @@ import { badRequest, conflict, notFound } from "../../lib/http";
 import { awardRule } from "../club/service";
 import { certificateFor, issueCertificate, summary } from "../constancias/service";
 
+/* Slug reservado del próximo webinar real. GET /api/webinars/proximo es una excepción explícita del contrato: devuelve
+   NextWebinar (contador del inicio), no WebinarSummary. Por eso ningún webinar nuevo puede usar este slug. */
 export const NEXT_SLUG = "proximo";
 /* [SUPUESTO] dominio público de la landing; se confirma con el dominio definitivo. */
 const landingUrl = (slug: string) => `kironmexico.com/es/webinar/${slug}`;
@@ -133,7 +135,8 @@ export const adminWebinars = async (): Promise<AdminWebinarList> => {
 
 export const attendees = async (slug: string): Promise<string[]> => {
   const s = db();
-  const h = s.historial.find((x) => x.slug === slug || x.titulo === slug);
+  /* Cada fila del historial de ejemplo tiene slug estable en los datos semilla; nunca se busca por título. */
+  const h = s.historial.find((x) => x.slug === slug);
   if (!h && !stored(slug)) throw notFound("Webinar no encontrado");
   return [...s.asistencias.filter((a) => a.slug === slug).map((a) => a.u), ...(h?.nombres ?? [])];
 };
@@ -142,7 +145,8 @@ export const createWebinar = async (body: WebinarCreateRequest): Promise<AdminWe
   const s = db();
   if (new Date(`${body.fecha}T${body.hora}:00-06:00`).getTime() <= now().getTime()) throw badRequest("La fecha y la hora tienen que ser futuras");
   if (body.umbral > body.duracion) throw badRequest("Los minutos para contar asistencia van de 1 a la duración del webinar");
-  if (body.slug === NEXT_SLUG || stored(body.slug)) throw conflict("Ya existe un webinar con esa dirección; cámbiala");
+  if (body.slug === NEXT_SLUG) throw badRequest(`La dirección "${NEXT_SLUG}" está reservada para el próximo webinar; usa otra`);
+  if (stored(body.slug) || s.historial.some((h) => h.slug === body.slug)) throw conflict("Ya existe un webinar con esa dirección; cámbiala");
   const w: StoredWebinar = {
     slug: body.slug,
     titulo: body.titulo,

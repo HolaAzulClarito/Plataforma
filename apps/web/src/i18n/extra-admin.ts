@@ -1,6 +1,23 @@
 /* Textos nuevos del administrador en la versión React (no existían en el demo v2.4.1 o cambiaron al conectar la API).
    Se registra en engine.ts después de extra.ts. Agrega aquí cada texto fijo nuevo del admin con su traducción. */
 export const I18N_EXTRA_ADMIN: Readonly<Record<string, string>> = {
+  // Dictamen de QA 26/11/2026: borrar módulo, índices posicionales, webinar "proximo", ajustes no aplicados
+  "Borrar módulo": "Delete module",
+  "Se borrará el módulo": "This will delete the module",
+  "y su lección.": "and its lesson.",
+  "y sus": "and its",
+  "lecciones.": "lessons.",
+  "No se puede deshacer.": "This can't be undone.",
+  "Módulo borrado": "Module deleted",
+  "No se puede borrar: el curso se quedaría sin lecciones": "It can't be deleted: the course would have no lessons",
+  "El curso necesita al menos un módulo": "The course needs at least one module",
+  "El curso ya tiene alumnos con avance: no se pueden borrar ni mover lecciones existentes (cambiaría su avance). Agrega lecciones al final del temario.":
+    "Students already have progress in this course: existing lessons can't be deleted or moved (it would change their progress). Add lessons at the end of the curriculum.",
+  "El examen ya tiene intentos o sesiones abiertas: no se pueden borrar ni reordenar sus preguntas (cambiaría lo que respondieron). Agrega preguntas nuevas al final.":
+    "The exam already has attempts or open sessions: its questions can't be deleted or reordered (it would change what students answered). Add new questions at the end.",
+  'La dirección "proximo" está reservada para el próximo webinar; usa otra.': 'The address "proximo" is reserved for the upcoming webinar; use another one.',
+  "Próximamente: el servidor todavía no aplica este ajuste.": "Coming soon: the server doesn't apply this setting yet.",
+  "Porcentaje configurable: Próximamente. Hoy siempre es 100 %.": "Configurable percentage: coming soon. It is always 100% for now.",
   // Barra lateral, tablero y médicos
   "pendientes": "pending",
   "vs. mes anterior": "vs. last month",
@@ -162,4 +179,5 @@ export const I18N_EXTRA_ADMIN_RX: ReadonlyArray<readonly [string, string]> = [
   ["^(.+): la pregunta (\\d+) necesita marcar verdadero o falso$", "$1: question $2 needs true or false marked"],
   ["^(.+): la pregunta (\\d+) tiene parejas incompletas$", "$1: question $2 has incomplete pairs"],
   ["^El curso no tiene lecciones$", "The course has no lessons"],
+  ["^El examen final no tiene preguntas que se califiquen solas$", "The final exam has no auto-graded questions"],
 ];

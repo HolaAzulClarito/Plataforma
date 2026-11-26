@@ -1,5 +1,24 @@
 /* Textos nuevos de academia, panel del médico y webinars (versión React con API). Ganan sobre en.ts y extra.ts.
    Diccionario exacto y reglas con expresión regular (texto en español -> inglés). */
+/* Motivos de "sin_intentos" por la regla de nota final (ADR-006); los arma la API con la etiqueta de la regla. */
+function gradeRuleReasons(): Record<string, string> {
+  const rules: [string, string][] = [
+    ["Calificación más alta", "Highest grade"],
+    ["Promedio de los intentos", "Average of attempts"],
+    ["Primer intento", "First attempt"],
+    ["Último intento", "Last attempt"],
+  ];
+  return Object.fromEntries(
+    rules.flatMap(([es, en]) => [
+      [`Con la regla "${es}", tu calificación final ya no puede llegar a la aprobatoria.`, `With the "${en}" rule, your final grade can no longer reach the passing grade.`],
+      [
+        `Con la regla "${es}", los intentos que te quedan no alcanzan la aprobatoria. La administración puede autorizar un intento adicional.`,
+        `With the "${en}" rule, your remaining attempts can't reach the passing grade. The admin team can approve an extra attempt.`,
+      ],
+    ]),
+  );
+}
+
 export const I18N_EXTRA_ACADEMIA: Readonly<Record<string, string>> = {
   // Academia y landing del curso
   "Secciones de la academia": "Academy sections",
@@ -29,6 +48,11 @@ export const I18N_EXTRA_ACADEMIA: Readonly<Record<string, string>> = {
   "No pudimos iniciar el examen": "We couldn't start the exam",
   "No pudimos enviar tus respuestas": "We couldn't submit your answers",
   "No pudimos abrir la constancia": "We couldn't open the certificate",
+  "Tu calificación final ya quedó definida": "Your final grade is already settled",
+  "Sin aprobar el examen final no se emite la constancia.": "No certificate is issued without passing the final exam.",
+  "El examen final todavía no tiene preguntas": "The final exam has no questions yet",
+  "Vista de administrador: el examen final se revisa desde el editor del curso": "Admin view: the final exam is reviewed from the course editor",
+  ...gradeRuleReasons(),
 
   // Verificación
   "Verificando…": "Verifying…",

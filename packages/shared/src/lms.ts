@@ -36,7 +36,10 @@ export const COURSE_STATE_LABEL: Record<CourseState, string> = {
 
 export const examConfig = (override?: Partial<ExamConfig>): ExamConfig => ({ ...EXAM_DEFAULTS, ...override });
 
-/* Número de lecciones reales (sin contar el examen final). */
+/* Número de lecciones reales (sin contar el examen final).
+   Course.lessons cuenta las lecciones MÁS el examen final, así que `lessons: 1` es un curso de solo examen final
+   (0 lecciones). Es un caso válido e intencional (ADR-005): el examen se abre al inscribirse y la constancia solo
+   exige aprobarlo. Por eso se usa `|| 12` (dato ausente) y no `Math.max(1, ...)`: no lo "corrijas". */
 export const lessonCount = (c: Pick<Course, "lessons"> | undefined): number => (c?.lessons || 12) - 1;
 
 /* Divide las lecciones de un curso en módulos de tamaño parecido. */
@@ -100,6 +103,27 @@ export const finalGrade = (notas: readonly number[], calc: GradeCalc): number | 
           ? notas[notas.length - 1]!
           : Math.max(...notas);
   return Math.round(v * 10) / 10;
+};
+
+/* Aprobación del curso por nota final (ADR-006): el examen final se aprueba si la calificación final, calculada con la
+   regla del examen, alcanza la aprobatoria. Con "mas_alta" equivale a "algún intento aprobado". */
+export const examPassed = (notas: readonly number[], calc: GradeCalc, aprobatoria: number): boolean => {
+  const f = finalGrade(notas, calc);
+  return f !== undefined && isPassing(f, aprobatoria);
+};
+
+/* ¿Puede el alumno aprobar todavía con `left` intentos más (en el mejor caso, 10 en cada uno)? (ADR-006)
+   - Sin intentos previos o con "mas_alta"/"ultimo_intento": sí, si le queda al menos un intento.
+   - "primer_intento": la nota ya quedó fija con el primer intento; ningún intento más cambia el resultado.
+   - "promedio": depende de cuántos intentos le queden; sin límite, siempre puede llegar. */
+export const canStillPass = (notas: readonly number[], calc: GradeCalc, aprobatoria: number, left = 1): boolean => {
+  if (left <= 0) return false;
+  if (examPassed(notas, calc, aprobatoria)) return true;
+  if (!notas.length) return isPassing(10, aprobatoria);
+  if (calc === "primer_intento") return false;
+  if (calc !== "promedio") return isPassing(10, aprobatoria);
+  if (left === Infinity) return isPassing(10, aprobatoria);
+  return examPassed([...notas, ...Array.from({ length: left }, () => 10)], calc, aprobatoria);
 };
 
 /* Califica un intento. answers: índice de pregunta -> opciones elegidas. */
@@ -171,6 +195,7 @@ export const editorIssues = (c: Pick<EditorCourse, "modulos" | "examen">): strin
   );
   const w = `Cierre · ${c.examen.titulo}`;
   if (!c.examen.preguntas.length) p.push(`${w}: sin preguntas`);
+  else if (!gradableQuestions(c.examen.preguntas).length) p.push("El examen final no tiene preguntas que se califiquen solas");
   c.examen.preguntas.forEach((q, k) => {
     const n = k + 1;
     if (!q.texto.trim()) p.push(`${w}: la pregunta ${n} no tiene texto`);

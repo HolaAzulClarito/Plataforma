@@ -132,10 +132,21 @@ function Editor({ id }: { id: string }) {
     latest.current = te.vars;
     setName(te.nombre);
   }, [te]);
+  /* Al desmontar (cambiar de plantilla o de pestaña) se guarda de inmediato lo pendiente en vez de perderlo. */
   useEffect(() => {
     const tm = timers.current;
-    return () => Object.values(tm).forEach((x) => clearTimeout(x));
-  }, []);
+    return () => {
+      const keys = (Object.keys(tm) as CertVarKey[]).filter((k) => tm[k] !== undefined);
+      keys.forEach((k) => {
+        clearTimeout(tm[k]);
+        delete tm[k];
+      });
+      const cur = latest.current;
+      if (!keys.length || !cur) return;
+      const pending = Object.fromEntries(keys.map((k) => [k, cur[k]])) as Partial<Record<CertVarKey, CertVar>>;
+      apiPatch<CertTemplateSummary>(`/admin/academia/plantillas/${id}`, { vars: pending }).catch((e: unknown) => failToast(e));
+    };
+  }, [id]);
 
   if (!te || !vars)
     return <ApiStatus loading={loading} error={error} onRetry={refetch} />;
@@ -144,6 +155,7 @@ function Editor({ id }: { id: string }) {
   const saveVar = (k: CertVarKey, delay = 350) => {
     clearTimeout(timers.current[k]);
     timers.current[k] = setTimeout(() => {
+      delete timers.current[k];
       const v = latest.current?.[k];
       if (!v) return;
       apiPatch<CertTemplateSummary>(`/admin/academia/plantillas/${id}`, { vars: { [k]: v } }).catch((e: unknown) => failToast(e));

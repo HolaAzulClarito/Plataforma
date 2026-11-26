@@ -1,5 +1,5 @@
 /* Tablero del administrador. Las cifras de uso son de ejemplo (no hay analítica real en la etapa 1). */
-import type { Dashboard } from "@kiron/shared";
+import { csvDocument, type Dashboard } from "@kiron/shared";
 import { db } from "../../store";
 
 export const dashboard = async (): Promise<Dashboard> => {
@@ -14,4 +14,4 @@ export const dashboard = async (): Promise<Dashboard> => {
 };
 
 export const dashboardCsv = async (): Promise<string> =>
-  "﻿" + ["Indicador,Valor", ...db().tablero.kpis.map((k) => `"${k.nombre}","${k.valor}"`)].join("\n") + "\n";
+  csvDocument([["Indicador", "Valor"], ...db().tablero.kpis.map((k) => [k.nombre, k.valor])]);

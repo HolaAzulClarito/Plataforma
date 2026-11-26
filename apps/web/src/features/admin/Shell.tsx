@@ -5,7 +5,7 @@ import { DEMO_ADMIN, type Dashboard } from "@kiron/shared";
 import { Icon, type IconName } from "../../components/Icon";
 import { useT } from "../../i18n";
 import { cx } from "../../lib/cx";
-import { navigate, session } from "../../state/session";
+import { session } from "../../state/session";
 import { useAdminApi } from "./common";
 
 export type AdminSection = "" | "medicos" | "webinars" | "club" | "academia" | "paginas";
@@ -61,11 +61,7 @@ export function AdminShell({ section, children }: { section: AdminSection; child
             <Icon name="globe" />
             <span>{t("Ver sitio")}</span>
           </Link>
-          <button type="button" className="side-btn" onClick={() => {
-              /* Primero sale de /admin: si no, RequireRole volvería a iniciar la sesión de administrador. */
-              navigate("/");
-              setTimeout(() => session.logout(), 0);
-            }}>
+          <button type="button" className="side-btn" onClick={() => session.signOut()}>
             <Icon name="log-out" />
             <span>{t("Salir")}</span>
           </button>

@@ -64,7 +64,10 @@ export interface ApiError {
    GET /api/distribuidores             -> Distributor[]   (de ejemplo)
    GET /api/paises                     -> CountriesResponse
    GET /api/videos                     -> Video[]
-   GET /api/webinars/proximo           -> NextWebinar
+   GET /api/webinars/proximo           -> NextWebinar   EXCEPCIÓN EXPLÍCITA: comparte forma de ruta con
+                                       /api/webinars/:slug pero devuelve NextWebinar (contador del inicio), no
+                                       WebinarSummary. "proximo" es un slug reservado: crear un webinar con él da 400.
+                                       Para el WebinarSummary del próximo webinar usa GET /api/webinars (incluye "proximo").
    GET /api/cursos                     -> Course[]   (solo los visibles al público; admin ve todos con ?todos=1)
 */
 export interface ProductDetail {
@@ -136,7 +139,12 @@ export interface CourseDetail {
   examen: { preguntas: number; aprobatoria: number; intentos: number; tiempo: number; desbloqueo: string };
   /* true si el curso tiene una plantilla de constancia publicada. */
   constancia: boolean;
+  /* Ajustes globales de la academia que necesita la vista del alumno (públicos, sin los sensibles).
+     enfoque: la vista del curso se muestra sin encabezado ni pie, con la barra "Salir del curso". */
+  ajustes: CourseViewSettings;
 }
+
+export type CourseViewSettings = Pick<AcademySettings, "enfoque">;
 
 /* ---------- Inscripciones ----------
    GET   /api/me/inscripciones                 (mvz)   -> Enrollment[]
@@ -250,7 +258,11 @@ export interface MyCoursesResponse {
         Tiempo límite: se aceptan envíos hasta EXAM_GRACE_SECONDS después del vencimiento; después responde 409 y el
         intento queda como no aprobado con calificación 0.0. El detalle de respuestas solo viene si el ajuste global
         "ocultar" está apagado.
-   POST /api/me/cursos/:slug/examen/solicitudes  (mvz) -> 201 AttemptRequest  (solo con intentos agotados y sin aprobar)
+   POST /api/me/cursos/:slug/examen/solicitudes  (mvz) -> 201 AttemptRequest  (solo si ExamStatus.puedeSolicitar; si no, 409)
+   Aprobado (ADR-006): el curso se aprueba si isPassing(finalGrade(notas, calculo), aprobatoria), con las notas de los
+   intentos cerrados. "sin_intentos" también cubre el caso en que, con la regla de cálculo, ningún intento restante
+   puede llevar la nota final a la aprobatoria (p. ej. "primer_intento" reprobado). Un examen sin preguntas
+   calificables queda "bloqueado", nunca "disponible".
 */
 export const EXAM_GRACE_SECONDS = 15;
 
@@ -268,6 +280,9 @@ export interface ExamStatus {
   /* Fecha ISO de apertura si el examen está programado. */
   abreEl: string;
   solicitud: AttemptRequestState | null;
+  /* true si está "sin_intentos", no hay solicitud pendiente y un intento adicional SÍ podría cambiar el resultado
+     (con "primer_intento" reprobado nunca; ADR-006). */
+  puedeSolicitar: boolean;
   sesion: ExamSession | null;
 }
 
@@ -353,13 +368,14 @@ export interface CertificateVerification {
 
 /* ---------- Webinars ----------
    GET  /api/webinars                        (público) -> WebinarSummary[]   (publicados; incluye "proximo")
-   GET  /api/webinars/:slug                  (público) -> WebinarSummary | 404
+   GET  /api/webinars/:slug                  (público) -> WebinarSummary | 404   (salvo :slug = "proximo", ver Catálogo)
    GET  /api/me/webinars/:slug               (mvz)     -> MyWebinarStatus
    POST /api/me/webinars/:slug/registro      (mvz)     -> MyWebinarStatus   (idempotente)
    POST /api/me/webinars/:slug/asistencia    (mvz)     -> MyWebinarStatus   (+puntos de la regla "webinar" y constancia la primera vez)
    GET  /api/admin/webinars                  (admin)   -> AdminWebinarList
    POST /api/admin/webinars                  (admin)   WebinarCreateRequest -> 201 AdminWebinar
-   GET  /api/admin/webinars/:slug/asistentes (admin)   -> string[]
+        400 si slug = "proximo" (reservado); 409 si el slug ya existe (nuevos o historial).
+   GET  /api/admin/webinars/:slug/asistentes (admin)   -> string[]   (webinars nuevos y filas del historial, por slug)
 */
 export interface MyWebinarStatus {
   slug: string;
@@ -402,7 +418,8 @@ export interface AdminWebinar extends WebinarSummary {
 }
 
 export interface WebinarHistoryRow {
-  slug: string | null;
+  /* Slug estable (el del próximo webinar es "proximo"; los de ejemplo vienen en los datos semilla). */
+  slug: string;
   titulo: string;
   fecha: string;
   estado: "Próximo" | "Concluido";
@@ -712,6 +729,9 @@ export interface CertTemplateUpdateRequest {
    POST   /api/admin/editor/cursos/:id/publicar                      -> EditorCourseDetail | 409 { error, pendientes }
    POST   /api/admin/editor/cursos/:id/modulos                       { nombre? } -> 201 EditorCourseDetail
    PATCH  /api/admin/editor/cursos/:id/modulos/:mi                   { nombre } -> EditorCourseDetail
+   DELETE /api/admin/editor/cursos/:id/modulos/:mi                   -> EditorCourseDetail
+          Borra el módulo con sus lecciones. 409 si el curso se queda sin lecciones o sin módulos, o si el módulo
+          tiene lecciones y el curso ya tiene alumnos con avance.
    POST   /api/admin/editor/cursos/:id/modulos/:mi/lecciones         { titulo? } -> 201 EditorCourseDetail
    PATCH  /api/admin/editor/cursos/:id/modulos/:mi/lecciones/:li     EditorLessonUpdateRequest -> EditorCourseDetail
    DELETE /api/admin/editor/cursos/:id/modulos/:mi/lecciones/:li     -> EditorCourseDetail
@@ -725,6 +745,11 @@ export interface CertTemplateUpdateRequest {
    POST   /api/admin/editor/cursos/:id/examen/banco                  { ids } -> EditorCourseDetail
    POST   /api/admin/editor/cursos/:id/examen/importar               ExamExport -> EditorCourseDetail
    GET    /api/admin/editor/cursos/:id/examen/exportar               -> ExamExport
+   Índices posicionales (el avance guarda índices de lección y los intentos, índices de pregunta):
+   - Con alumnos con avance: 409 al borrar o mover lecciones existentes, al borrar un módulo con lecciones y al
+     agregar una lección en un módulo anterior al último con lecciones. Agregar al final sí se permite.
+   - Con intentos (abiertos o cerrados) del examen: 409 al borrar preguntas o al cambiar una pregunta entre tipo
+     calificable (om, rm, vf) y no calificable (rel, ab). Agregar preguntas al final sí se permite.
 */
 export interface EditorCourseDetail {
   curso: EditorCourse;

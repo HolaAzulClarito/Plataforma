@@ -1,5 +1,8 @@
 /* Administración de la academia: ajustes globales, calificaciones, alumnos, grupos, banco, automatizaciones y reportes. */
 import {
+  attemptsLeft,
+  canStillPass,
+  csvDocument,
   daysSince,
   INACTIVE_DAYS,
   inRange,
@@ -28,8 +31,8 @@ import {
 import { db, nextId } from "../../store";
 import { hoyMx, now } from "../../lib/clock";
 import { notFound } from "../../lib/http";
-import { allCourses, courseTitle, findCourse, getCourse, lessonsOf } from "../cursos/service";
-import { attemptsOf, finalNoteOf, isPassed, maxFor } from "../examenes/service";
+import { allCourses, courseTitle, examOf, findCourse, getCourse, lessonsOf } from "../cursos/service";
+import { attemptsOf, finalNoteOf, isPassedRef, maxFor } from "../examenes/service";
 import { certificateFor } from "../constancias/service";
 
 /* ---------- Ajustes globales ---------- */
@@ -58,10 +61,14 @@ const gradebook = (): GradebookRow[] =>
     .flatMap((p) => {
       const r = findCourse(p.s);
       if (!r) return [];
-      const passed = isPassed(p.u, p.s);
+      const passed = isPassedRef(r, p.u);
       const used = attemptsOf(p.u, p.s).length;
       const max = maxFor(r, p.u);
-      const estado: GradebookState = passed ? "Aprobado" : isInactive(p.ultimoAcceso) ? "Inactivo" : used >= max ? "Sin intentos" : "En curso";
+      /* ADR-006: también es "Sin intentos" si, con la regla de cálculo, los intentos restantes ya no alcanzan. */
+      const { calculo, aprobatoria } = examOf(r).config;
+      const notas = attemptsOf(p.u, p.s).filter((a) => a.estado !== "en_curso").map((a) => a.nota);
+      const stuck = used >= max || !canStillPass(notas, calculo, aprobatoria, attemptsLeft(max, used));
+      const estado: GradebookState = passed ? "Aprobado" : isInactive(p.ultimoAcceso) ? "Inactivo" : stuck ? "Sin intentos" : "En curso";
       return [
         {
           u: p.u,
@@ -255,13 +262,6 @@ export const report = async (): Promise<AcademyReport> => {
   };
 };
 
-const csvCell = (v: unknown) => {
-  const t = String(v ?? "");
-  /* Evita inyección de fórmulas al abrir el CSV en Excel. */
-  const safe = /^[=+\-@\t\r]/.test(t) ? "'" + t : t;
-  return `"${safe.replace(/"/g, '""')}"`;
-};
-
 export const reportCsv = async (kind: ReportKind): Promise<string> => {
   const rows = gradebook();
   let head: string[];
@@ -289,5 +289,5 @@ export const reportCsv = async (kind: ReportKind): Promise<string> => {
     head = ["Alumno", "Correo", "Curso", "Avance %", "Calificación", "Intentos", "Último acceso", "Estado"];
     data = rows.map((r) => [r.u, r.correo, r.titulo, r.avance, r.nota?.toFixed(1) ?? "", r.intentosUsados, r.ultimoAcceso, r.estado]);
   }
-  return "﻿" + [head, ...data].map((r) => r.map(csvCell).join(",")).join("\n") + "\n";
+  return csvDocument([head, ...data]);
 };

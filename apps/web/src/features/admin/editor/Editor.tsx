@@ -8,7 +8,7 @@ import type { AcademySettings, EditorCourse, EditorCourseDetail } from "@kiron/s
 import { Icon } from "../../../components/Icon";
 import { ApiStatus, Notice } from "../../../components/ui";
 import { useT } from "../../../i18n";
-import { apiPatch, apiPost, useApi } from "../../../lib/api";
+import { ApiError, apiDelete, apiPatch, apiPost, errorField, useApi } from "../../../lib/api";
 import { cx } from "../../../lib/cx";
 import { closeModal, openModal } from "../../../state/modal";
 import { navigate } from "../../../state/session";
@@ -56,7 +56,38 @@ function Issues({ p }: { p: string[] }) {
     </div>
   );
 }
+const isStringList = (v: unknown): v is string[] => Array.isArray(v) && v.every((x) => typeof x === "string");
+
 export const showIssues = (p: string[]) => openModal({ title: "Antes de publicar", content: <Issues p={p} />, size: "sm" });
+
+/* Confirmación antes de borrar un módulo con sus lecciones (DELETE .../modulos/:mi). */
+function ConfirmDeleteModule({ nombre, lecciones, onConfirm }: { nombre: string; lecciones: number; onConfirm: () => void }) {
+  const t = useT();
+  return (
+    <div className="modal-b">
+      <p style={{ marginTop: 0 }}>
+        {t("Se borrará el módulo")} <b>{nombre}</b> {lecciones === 1 ? t("y su lección.") : lecciones ? `${t("y sus")} ${lecciones} ${t("lecciones.")}` : "."}{" "}
+        {t("No se puede deshacer.")}
+      </p>
+      <div style={{ display: "flex", gap: 10 }}>
+        <button type="button" className="btn btn-ghost" style={{ flex: 1 }} onClick={() => closeModal()}>
+          {t("Cancelar")}
+        </button>
+        <button
+          type="button"
+          className="btn btn-primary"
+          style={{ flex: 1 }}
+          onClick={() => {
+            closeModal();
+            onConfirm();
+          }}
+        >
+          <AIcon name="trash" /> {t("Borrar módulo")}
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function Outline({ api, mi, li, datos }: { api: EditorApi; mi: number | "examen"; li: number; datos: boolean }) {
   const t = useT();
@@ -73,6 +104,24 @@ function Outline({ api, mi, li, datos }: { api: EditorApi; mi: number | "examen"
     const pos = c.modulos.length;
     const r = await mut(() => apiPost<EditorCourseDetail>(`${base}/modulos`, { nombre: `Módulo ${pos + 1}` }), undefined, true);
     if (r) navigate(ceHref(id, pos, 0));
+  };
+  const removeModule = (a: number) => {
+    const m = c.modulos[a];
+    if (!m) return;
+    openModal({
+      title: "Borrar módulo",
+      size: "sm",
+      content: (
+        <ConfirmDeleteModule
+          nombre={m.nombre}
+          lecciones={m.lecciones.length}
+          onConfirm={async () => {
+            const r = await mut(() => apiDelete<EditorCourseDetail>(`${base}/modulos/${a}`), "Módulo borrado", true);
+            if (r && mi !== "examen" && (mi >= a || mi >= r.curso.modulos.length)) navigate(ceHref(id, Math.max(Math.min(mi === a ? a - 1 : mi - 1, r.curso.modulos.length - 1), 0), 0));
+          }}
+        />
+      ),
+    });
   };
   const rename = (a: number) => {
     const v = (names[a] ?? "").trim();
@@ -113,6 +162,15 @@ function Outline({ api, mi, li, datos }: { api: EditorApi; mi: number | "examen"
           <div className="ce-madd">
             <button type="button" onClick={() => addLesson(a)} disabled={api.busy || m.lecciones.length >= 60}>
               <Icon name="plus" /> {t("Lección")}
+            </button>
+            <button
+              type="button"
+              onClick={() => removeModule(a)}
+              disabled={api.busy || c.modulos.length <= 1}
+              aria-label={`${t("Borrar módulo")} ${a + 1}`}
+              title={t("Borrar módulo")}
+            >
+              <AIcon name="trash" />
             </button>
           </div>
         </div>
@@ -210,7 +268,10 @@ export function EditorView({ id, mi: miRaw, li: liRaw }: { id: string; mi: strin
       bumpAdmin();
       toast("Curso publicado. Ya aparece en Academia.");
     } catch (e) {
-      failToast(e, "No se pudo publicar el curso.");
+      /* 409 { error, pendientes }: muestra la lista que manda el servidor (puede tener más que la copia local). */
+      const pendientes = e instanceof ApiError && e.status === 409 ? errorField(e, "pendientes", isStringList) : undefined;
+      if (pendientes?.length) showIssues(pendientes);
+      else failToast(e, "No se pudo publicar el curso.");
       res.refetch();
     } finally {
       setBusy(false);

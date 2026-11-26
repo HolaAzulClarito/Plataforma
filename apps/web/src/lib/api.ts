@@ -10,11 +10,21 @@ export const API_BASE = "/api";
 
 export class ApiError extends Error {
   readonly status: number;
-  constructor(message: string, status: number) {
+  /* Cuerpo JSON completo del error (p. ej. { error, pendientes } en un 409 al publicar); undefined si no era JSON. */
+  readonly body: unknown;
+  constructor(message: string, status: number, body?: unknown) {
     super(message);
     this.name = "ApiError";
     this.status = status;
+    this.body = body;
   }
+}
+
+/* Lee un campo del cuerpo de un ApiError con su tipo esperado; undefined si no está. */
+export function errorField<T>(e: unknown, key: string, is: (v: unknown) => v is T): T | undefined {
+  if (!(e instanceof ApiError) || typeof e.body !== "object" || e.body === null) return undefined;
+  const v = (e.body as Record<string, unknown>)[key];
+  return is(v) ? v : undefined;
 }
 
 const toUrl = (path: string) =>
@@ -48,7 +58,7 @@ export async function apiRequest<T>(method: string, path: string, body?: unknown
   }
   if (!res.ok) {
     const msg = (data as Partial<ApiErrorBody> | undefined)?.error;
-    throw new ApiError(typeof msg === "string" && msg ? msg : `Error ${res.status}`, res.status);
+    throw new ApiError(typeof msg === "string" && msg ? msg : `Error ${res.status}`, res.status, data);
   }
   return data as T;
 }

@@ -1,7 +1,8 @@
 /* Compatibilidad con las URLs del demo (docs/mapa-rutas.md):
    - Enlaces viejos con hash: /#/productos?cat=X -> /productos?cat=X
    - Alias: /consultorio* -> /panel*, /videoteca-pets -> /videoteca, /distribuidores-mexico, /distribuidores-mundo,
-     /distribuidores (y cualquier subruta que no sea "mundo") -> /distribuidores/mexico, /donde-comprar -> /representantes */
+     /distribuidores (y cualquier subruta que no sea "mundo") -> /distribuidores/mexico, /donde-comprar -> /representantes,
+     /webinar (sin slug) -> /webinar/proximo (legacy app.js: webinarLanding(seg[1] || "proximo")) */
 import type { ReactNode } from "react";
 import { Navigate, useLocation } from "react-router";
 
@@ -22,6 +23,7 @@ export function resolveAlias(pathname: string): string | null {
   if (p === "/distribuidores") return "/distribuidores/mexico";
   if (p.startsWith("/distribuidores/") && p !== "/distribuidores/mexico" && p !== "/distribuidores/mundo") return "/distribuidores/mexico";
   if (p === "/donde-comprar") return "/representantes";
+  if (p === "/webinar") return "/webinar/proximo";
   return null;
 }
 

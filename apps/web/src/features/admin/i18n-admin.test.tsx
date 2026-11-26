@@ -35,7 +35,7 @@ const API = {
     nuevos: [],
     historial: [
       { slug: "proximo", titulo: "Webinar", fecha: "15/12/2026", estado: "Próximo", registrados: 418, asistentes: null },
-      { slug: null, titulo: "Webinar anterior · ejemplo 1", fecha: "12/11/2026", estado: "Concluido", registrados: 512, asistentes: 342 },
+      { slug: "ejemplo-2026-11-12", titulo: "Webinar anterior · ejemplo 1", fecha: "12/11/2026", estado: "Concluido", registrados: 512, asistentes: 342 },
     ],
   } satisfies AdminWebinarList,
   "/api/club/reglas": RULES,

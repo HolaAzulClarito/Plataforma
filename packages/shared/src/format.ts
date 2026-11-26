@@ -70,3 +70,15 @@ export const mmss = (s: number): string => `${Math.floor(s / 60)}:${pad2(s % 60)
 /* Normaliza para búsqueda: sin acentos y en minúsculas. */
 export const normalize = (s: string): string =>
   s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+
+/* ---------- CSV ----------
+   Una celda entre comillas, con comillas dobladas. Si empieza con = + - @ tabulador o retorno se antepone ' para que
+   Excel/Sheets no la ejecuten como fórmula (inyección CSV). Úsalo en TODA exportación CSV, del cliente o del servidor. */
+export const csvCell = (v: unknown): string => {
+  const t = String(v ?? "");
+  const safe = /^[=+\-@\t\r]/.test(t) ? "'" + t : t;
+  return `"${safe.replace(/"/g, '""')}"`;
+};
+
+/* Documento CSV completo con BOM (para que Excel lea UTF-8) y salto de línea final. */
+export const csvDocument = (rows: readonly (readonly unknown[])[]): string => "\uFEFF" + rows.map((r) => r.map(csvCell).join(",")).join("\n") + "\n";

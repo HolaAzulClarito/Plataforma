@@ -23,6 +23,9 @@ describe("enlaces viejos con #/ y alias", () => {
     expect(resolveAlias("/distribuidores-mundo")).toBe("/distribuidores/mundo");
     expect(resolveAlias("/distribuidores")).toBe("/distribuidores/mexico");
     expect(resolveAlias("/donde-comprar")).toBe("/representantes");
+    expect(resolveAlias("/webinar")).toBe("/webinar/proximo");
+    expect(resolveAlias("/webinar/")).toBe("/webinar/proximo");
+    expect(resolveAlias("/webinar/proximo")).toBeNull();
     expect(resolveAlias("/productos")).toBeNull();
   });
 
@@ -43,6 +46,14 @@ describe("enlaces viejos con #/ y alias", () => {
     renderApp("/#/consultorio");
     await waitFor(() => expect(where()).toBe("/panel"));
     await waitFor(() => expect(getSession().role).toBe("mvz"));
+  });
+
+  it("/webinar sin slug redirige a /webinar/proximo (como el demo)", async () => {
+    mockFetch();
+    renderApp("/webinar");
+    await waitFor(() => expect(where()).toBe("/webinar/proximo"));
+    renderApp("/#/webinar");
+    await waitFor(() => expect(screen.getAllByTestId("location").at(-1)!.textContent).toBe("/webinar/proximo"));
   });
 
   it("/admin sin sesión de administrador inicia la sesión simulada con ese rol", async () => {

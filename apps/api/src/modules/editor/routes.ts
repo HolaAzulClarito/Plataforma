@@ -25,6 +25,7 @@ import {
   createEditorCourse,
   deleteAttachment,
   deleteLesson,
+  deleteModule,
   deleteQuestion,
   exportExam,
   getEditorCourse,
@@ -55,6 +56,10 @@ export const editorAdmin = new Hono()
   .patch(`${base}/modulos/:mi`, v("param", ModuleParam), v("json", z.object({ nombre: required(120) })), async (c) => {
     const p = c.req.valid("param");
     return c.json(await renameModule(p.id, p.mi, c.req.valid("json").nombre));
+  })
+  .delete(`${base}/modulos/:mi`, v("param", ModuleParam), async (c) => {
+    const p = c.req.valid("param");
+    return c.json(await deleteModule(p.id, p.mi));
   })
   .post(`${base}/modulos/:mi/lecciones`, v("param", ModuleParam), v("json", z.object({ titulo: text(120).optional() })), async (c) => {
     const p = c.req.valid("param");

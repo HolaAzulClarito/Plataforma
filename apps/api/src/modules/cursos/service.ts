@@ -165,6 +165,8 @@ export const courseDetail = async (slug: string, opts: { admin: boolean; withSes
     descripcion: r.editor?.descripcion ?? "",
     examen: { preguntas: config.maxPreg ? Math.min(config.maxPreg, preguntas.length) : preguntas.length, aprobatoria: config.aprobatoria, intentos: config.intentos, tiempo: config.tiempo, desbloqueo: config.desbloqueo },
     constancia: hasPublishedTemplate(slug),
+    /* Solo ajustes no sensibles que el alumno necesita para su vista (ADR-005, hallazgo 4 del dictamen). */
+    ajustes: { enfoque: g.enfoque },
   };
 };
 

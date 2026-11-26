@@ -97,6 +97,6 @@ describe("Academia (administración)", () => {
     const t = await admin.get("/tablero");
     expect(t.body).toMatchObject({ ejemplo: true, cedulasPendientes: 3, inscripcionesPendientes: 2 });
     expect(t.body.kpis).toHaveLength(4);
-    expect((await admin.get("/tablero?formato=csv")).text).toContain("Indicador,Valor");
+    expect((await admin.get("/tablero?formato=csv")).text).toContain(`"Indicador","Valor"`);
   });
 });

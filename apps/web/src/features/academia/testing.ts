@@ -52,6 +52,7 @@ export const detailOf = (c = FREE, lessons = 2): CourseDetail => ({
   descripcion: "",
   examen: { preguntas: 2, aprobatoria: 80, intentos: 3, tiempo: 0, desbloqueo: "" },
   constancia: true,
+  ajustes: { enfoque: false },
 });
 
 export const enrollment = (s: string, st: Enrollment["st"]): Enrollment => ({ id: 9, u: "Dra. Laura Méndez", s, st, f: "26/11/2026", por: "Inscripción en línea" });
@@ -68,6 +69,7 @@ export const examStatus = (over: Partial<ExamStatus> = {}): ExamStatus => ({
   aprobado: false,
   abreEl: "",
   solicitud: null,
+  puedeSolicitar: false,
   sesion: null,
   ...over,
 });

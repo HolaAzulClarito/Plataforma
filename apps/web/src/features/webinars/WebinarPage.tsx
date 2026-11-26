@@ -73,8 +73,8 @@ export function WebinarPage() {
   const { lang } = useI18n();
   const { slug = "proximo" } = useParams();
   const { role } = useSession();
-  /* GET /api/webinars/proximo responde NextWebinar (la ruta del próximo webinar gana a /webinars/:slug), así que el
-     resumen se toma del listado público, que incluye "proximo" y los webinars publicados. */
+  /* GET /api/webinars/proximo es una excepción explícita del contrato (packages/shared/src/api.ts): responde NextWebinar,
+     no WebinarSummary. Por eso el resumen se toma siempre del listado público, que incluye "proximo" y los publicados. */
   const list = useApi<WebinarSummary[]>("/api/webinars");
   const me = useWebinarStatus(slug);
   const localReg = !!useStore(webinarRegStore)[slug];

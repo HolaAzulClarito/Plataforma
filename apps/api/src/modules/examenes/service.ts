@@ -3,6 +3,9 @@ import { randomUUID } from "node:crypto";
 import {
   attemptsLeft,
   canIssueCertificate,
+  canStillPass,
+  examPassed,
+  GRADE_CALC_LABEL,
   EXAM_GRACE_SECONDS,
   finalGrade,
   gradeAnswers,
@@ -63,13 +66,26 @@ const expireStale = (u: string, s: string): void => {
 
 export const maxFor = (r: CourseRef, u: string): number => maxAttempts(examOf(r).config.intentos, db().extra[key(u, r.course.slug)] ?? 0);
 
-export const isPassed = (u: string, s: string): boolean => attemptsOf(u, s).some((a) => a.estado === "calificado" && a.ok);
-
-export const finalNoteOf = (r: CourseRef, u: string): number | null => {
-  const notas = attemptsOf(u, r.course.slug)
+/* Notas de los intentos cerrados (calificados o expirados en 0.0), en orden. */
+const closedNotes = (u: string, s: string): number[] =>
+  attemptsOf(u, s)
     .filter((a) => a.estado !== "en_curso")
     .map((a) => a.nota);
-  return finalGrade(notas, examOf(r).config.calculo) ?? null;
+
+/* Examen final aprobado por NOTA FINAL según la regla de cálculo del examen (ADR-006), no por "algún intento aprobado". */
+export const isPassedRef = (r: CourseRef, u: string): boolean => {
+  const { calculo, aprobatoria } = examOf(r).config;
+  return examPassed(closedNotes(u, r.course.slug), calculo, aprobatoria);
+};
+
+export const isPassed = (u: string, s: string): boolean => isPassedRef(getCourse(s), u);
+
+export const finalNoteOf = (r: CourseRef, u: string): number | null => finalGrade(closedNotes(u, r.course.slug), examOf(r).config.calculo) ?? null;
+
+/* ¿Un intento adicional autorizado podría cambiar el resultado? (ADR-006: con "primer_intento" reprobado, no.) */
+const extraCanHelp = (r: CourseRef, u: string, left: number): boolean => {
+  const { calculo, aprobatoria } = examOf(r).config;
+  return canStillPass(closedNotes(u, r.course.slug), calculo, aprobatoria, (left === Infinity ? 0 : left) + 1);
 };
 
 const doneOf = (u: string, s: string): number[] => db().avance.find((a) => a.u === u && a.s === s)?.done ?? [];
@@ -98,10 +114,11 @@ export const examStatus = (r: CourseRef, u: string): ExamStatus => {
   const list = attemptsOf(u, s);
   const max = maxFor(r, u);
   const used = list.length;
-  const passed = isPassed(u, s);
+  const passed = isPassedRef(r, u);
   const open = list.find((a) => a.estado === "en_curso");
   const req = db().solicitudes.filter((x) => x.u === u && x.s === s).at(-1);
   const left = attemptsLeft(max, used);
+  const notas = closedNotes(u, s);
   const base = {
     config,
     preguntas: config.maxPreg ? Math.min(config.maxPreg, preguntas.length) : preguntas.length,
@@ -112,6 +129,7 @@ export const examStatus = (r: CourseRef, u: string): ExamStatus => {
     aprobado: passed,
     abreEl: "",
     solicitud: req?.estado ?? null,
+    puedeSolicitar: false,
     sesion: null,
   };
   if (passed) return { ...base, estado: "aprobado", motivo: "Ya aprobaste el examen final" };
@@ -119,7 +137,19 @@ export const examStatus = (r: CourseRef, u: string): ExamStatus => {
   if (!lessonsDone(doneOf(u, s), r.course)) return { ...base, estado: "bloqueado", motivo: "Termina todas las lecciones para presentar el examen final" };
   if (config.desbloqueo && hoyIso() < config.desbloqueo)
     return { ...base, estado: "programado", abreEl: config.desbloqueo, motivo: `El examen final se abre el ${isoToMx(config.desbloqueo)}` };
-  if (left <= 0) return { ...base, estado: "sin_intentos", motivo: `Usaste ${used} de ${max} intentos. La administración puede autorizar un intento adicional.` };
+  /* Un examen sin preguntas calificables nunca está "disponible" (el editor no deja publicarlo así; esto cubre datos viejos). */
+  if (!preguntas.length) return { ...base, estado: "bloqueado", motivo: "El examen final todavía no tiene preguntas" };
+  if (left <= 0 || !canStillPass(notas, config.calculo, config.aprobatoria, left)) {
+    const helps = extraCanHelp(r, u, left);
+    const puedeSolicitar = helps && req?.estado !== "pendiente";
+    const regla = GRADE_CALC_LABEL[config.calculo];
+    const motivo = !helps
+      ? `Con la regla "${regla}", tu calificación final ya no puede llegar a la aprobatoria.`
+      : left > 0
+        ? `Con la regla "${regla}", los intentos que te quedan no alcanzan la aprobatoria. La administración puede autorizar un intento adicional.`
+        : `Usaste ${used} de ${max} intentos. La administración puede autorizar un intento adicional.`;
+    return { ...base, estado: "sin_intentos", puedeSolicitar, motivo };
+  }
   return { ...base, estado: "disponible", motivo: "Tu examen final está listo" };
 };
 
@@ -140,7 +170,6 @@ export const startExam = async (u: string, slug: string): Promise<ExamSession> =
   if (st.estado === "en_curso") return st.sesion!;
   if (st.estado !== "disponible") throw conflict(st.motivo, { estado: st.estado });
   const { config, preguntas } = examOf(r);
-  if (!preguntas.length) throw conflict("El examen todavía no tiene preguntas");
   let idx = preguntas.map((_, i) => i);
   if (config.orden === "aleatorio") idx = shuffle(idx);
   if (config.maxPreg) idx = idx.slice(0, config.maxPreg);
@@ -207,7 +236,8 @@ export const submitExam = async (u: string, slug: string, body: ExamSubmitReques
 
   let puntos = 0;
   let constancia = null;
-  if (a.ok && canIssueCertificate(lessonsDone(doneOf(u, slug), r.course), true) && !certificateFor(u, slug)) {
+  /* La constancia depende de la nota final del curso (ADR-006), no solo de este intento. */
+  if (canIssueCertificate(lessonsDone(doneOf(u, slug), r.course), isPassedRef(r, u)) && !certificateFor(u, slug)) {
     const { cert } = issueCertificate(u, r.course.price ? "diplomado" : "curso", slug, r.course.title);
     constancia = summary(cert);
     puntos = awardRule(u, "curso", `Curso terminado: ${r.course.title}`);
@@ -233,6 +263,7 @@ export const requestExtraAttempt = async (u: string, slug: string): Promise<Atte
   const st = examStatus(r, u);
   if (st.estado !== "sin_intentos") throw conflict("Solo puedes pedir un intento adicional cuando agotaste tus intentos");
   if (st.solicitud === "pendiente") throw conflict("Ya enviaste una solicitud; te avisamos cuando la revisen");
+  if (!st.puedeSolicitar) throw conflict("Con la regla de calificación de este examen, un intento adicional no cambiaría tu resultado");
   const req: AttemptRequest = { id: nextId(db().solicitudes), u, s: slug, estado: "pendiente", f: hoyMx() };
   db().solicitudes.unshift(req);
   return req;
