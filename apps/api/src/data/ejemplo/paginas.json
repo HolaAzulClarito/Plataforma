@@ -1,0 +1,76 @@
+[
+  {
+    "id": 1,
+    "titulo": "Inicio",
+    "url": "/",
+    "estado": "Publicada",
+    "edicion": "26/11/2026",
+    "bloques": [
+      "Héroe con video",
+      "Academia y panel del médico",
+      "Productos destacados",
+      "Próximo webinar",
+      "Lo que encuentras aquí",
+      "Presencia internacional"
+    ],
+    "seo": {
+      "titulo": "Inicio · Kirón",
+      "descripcion": "Laboratorio veterinario mexicano",
+      "idioma": "es"
+    }
+  },
+  {
+    "id": 2,
+    "titulo": "Productos",
+    "url": "/productos/",
+    "estado": "Publicada",
+    "edicion": "28/10/2026",
+    "bloques": [
+      "Héroe",
+      "Texto",
+      "Productos destacados",
+      "Formulario"
+    ],
+    "seo": {
+      "titulo": "Productos · Kirón",
+      "descripcion": "Laboratorio veterinario mexicano",
+      "idioma": "es"
+    }
+  },
+  {
+    "id": 3,
+    "titulo": "Campaña SPIROCARD DUO",
+    "url": "/spirocard-duo/",
+    "estado": "Borrador",
+    "edicion": "29/10/2026",
+    "bloques": [
+      "Héroe",
+      "Texto",
+      "Productos destacados",
+      "Formulario"
+    ],
+    "seo": {
+      "titulo": "Campaña SPIROCARD DUO · Kirón",
+      "descripcion": "Laboratorio veterinario mexicano",
+      "idioma": "es"
+    }
+  },
+  {
+    "id": 4,
+    "titulo": "Nosotros",
+    "url": "/nosotros/",
+    "estado": "Publicada",
+    "edicion": "12/10/2026",
+    "bloques": [
+      "Héroe",
+      "Texto",
+      "Productos destacados",
+      "Formulario"
+    ],
+    "seo": {
+      "titulo": "Nosotros · Kirón",
+      "descripcion": "Laboratorio veterinario mexicano",
+      "idioma": "es"
+    }
+  }
+]

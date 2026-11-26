@@ -1,0 +1,60 @@
+/* Demo v3: academia, panel del médico, sala del webinar.
+   Portado de legacy/assets/app.css (líneas 654-711). Conserva los nombres de clase del demo. */
+/* v3 · Academia, panel del médico, webinar en el sitio, club y asistente */
+.pmock{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-pop);background:#fff;border:1px solid var(--border)}
+.pmock-bar{height:38px;background:var(--surface-alt);display:flex;align-items:center;gap:7px;padding:0 16px}
+.pmock-bar i{width:10px;height:10px;border-radius:50%;background:var(--border-strong)}
+.pmock-bar span{margin-left:12px;font-size:12px;color:var(--muted);background:#fff;border-radius:6px;padding:3px 10px}
+.pmock-body{padding:26px}
+.pm-hi{font:700 22px/1.2 var(--f-display);color:var(--web-navy);margin:0 0 16px}
+.pm-live{border-radius:16px;background:var(--green-900);color:#fff;padding:22px;display:flex;flex-direction:column;gap:6px}
+.pm-live b{font:800 22px/1.15 var(--f-camp)}
+.pm-live small{color:#dfe2da;font-size:13px}
+.pm-badge{display:inline-flex;align-items:center;gap:8px;font:700 11px var(--f-display);letter-spacing:.14em;color:#fff;background:rgba(180,35,24,.9);border-radius:50px;padding:5px 12px;align-self:flex-start}
+.pm-badge i,.lr-live i{width:8px;height:8px;border-radius:50%;background:#fff;animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.25}}
+.pm-btn{align-self:flex-start;margin-top:10px;display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--web-navy);font-weight:600;font-size:14px;border-radius:50px;padding:9px 18px}
+.pm-btn .ico{width:16px;height:16px}
+.pm-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.pm-row div{border:1px solid var(--border);border-radius:14px;padding:12px 14px}
+.pm-row small{display:block;font-size:12px;color:var(--muted)}
+.pm-row b{font:800 22px var(--f-camp);color:var(--web-navy)}
+.nw-note{display:flex;gap:8px;align-items:flex-start;margin-top:18px;font-size:13px;color:#dfe2da}
+.nw-note .ico{width:16px;height:16px;flex-shrink:0;margin-top:2px}
+.live-card{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;background:var(--green-900);border:0;color:#dfe2da;padding:30px}
+.live-card h2{color:#fff;font:800 30px/1.1 var(--f-camp);margin:14px 0 6px}
+.live-card .lc-note{font-size:13px;color:#dfe2da;margin-top:12px}
+.live-card .pp-date{transform:scale(.9)}
+.invoice-box{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-top:16px;padding:16px;border:1px dashed var(--border-strong);border-radius:14px;flex-wrap:wrap}
+.invoice-box b{color:var(--web-navy)}
+.invoice-box p{font-size:13px;color:var(--muted);margin:4px 0 8px}
+.drop{display:flex;flex-direction:column;align-items:center;gap:6px;padding:30px;border:2px dashed var(--border-strong);border-radius:16px;cursor:pointer;color:var(--web-navy);text-align:center}
+.drop:hover{background:var(--surface-alt)}
+.drop small{color:var(--muted)}
+.spin.dark{width:28px;height:28px;border-color:var(--border);border-top-color:var(--web-blue)}
+.pts-in{width:96px;height:40px;text-align:right}
+.repz .avatar{width:44px;height:44px;margin-bottom:12px}
+.repz h3{font-size:20px}
+/* Sala del webinar */
+.modal-bg.live{padding:0;background:rgba(29,29,27,.92)}
+.live-room{width:min(1280px,100%);height:min(780px,100vh);background:#1d1d1b;color:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 40px 100px rgba(0,0,0,.5)}
+.lr-top{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
+.lr-top b{font:700 17px var(--f-display)}
+.lr-sp{font-size:13px;color:#c5c9bf}
+.lr-live{display:inline-flex;align-items:center;gap:8px;background:#b42318;border-radius:50px;padding:5px 12px;font:700 11px var(--f-display);letter-spacing:.14em}
+.lr-x{margin-left:auto;background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.2)}
+.lr-main{flex:1;display:grid;grid-template-columns:1fr 320px;min-height:0}
+.lr-stage{position:relative;background:#000;min-height:0}
+.lr-stage video{width:100%;height:100%;object-fit:cover;display:block}
+.lr-tag{position:absolute;left:14px;bottom:14px;font-size:12px;background:rgba(0,0,0,.55);padding:6px 10px;border-radius:8px}
+.lr-count{position:absolute;right:14px;top:14px;display:flex;align-items:center;gap:6px;font-size:13px;background:rgba(0,0,0,.55);padding:6px 10px;border-radius:8px}
+.lr-count .ico{width:15px;height:15px}
+.lr-side{display:flex;flex-direction:column;border-left:1px solid rgba(255,255,255,.08);padding:16px;gap:12px;min-height:0}
+.lr-q{flex:1;overflow:auto;display:flex;flex-direction:column;gap:10px}
+.lr-q div{background:rgba(255,255,255,.06);border-radius:12px;padding:10px 12px;font-size:14px}
+.lr-q small{display:block;color:#c5c9bf;font-size:11.5px;margin-bottom:2px}
+.lr-in{display:flex;gap:8px}
+.lr-in input{flex:1;min-width:0;height:42px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;padding:0 12px;font:inherit}
+.lr-foot{display:flex;align-items:center;gap:8px;padding:12px 18px;font-size:13.5px;color:#b3e34f;border-top:1px solid rgba(255,255,255,.08)}
+.lr-foot .ico{width:18px;height:18px}
+@media (max-width:900px){.lr-main{grid-template-columns:1fr;grid-template-rows:auto 1fr}.lr-stage{aspect-ratio:16/9}.live-room{border-radius:0;height:100vh}.live-card{grid-template-columns:1fr}.live-card .lc-side{display:none}.pm-row{grid-template-columns:1fr 1fr 1fr}}

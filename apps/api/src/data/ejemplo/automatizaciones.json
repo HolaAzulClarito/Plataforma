@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "nombre": "Recordatorio de avance",
+    "disparador": "Si el alumno lleva 7 días sin entrar a un curso",
+    "mensaje": "Hola {nombre}, vas en {avance} de {curso}. Retoma donde te quedaste: {enlace}",
+    "activa": true,
+    "correo": true,
+    "panel": true
+  },
+  {
+    "id": 2,
+    "nombre": "Examen pendiente",
+    "disparador": "Cuando terminó las lecciones y no ha presentado el examen",
+    "mensaje": "Hola {nombre}, ya terminaste las lecciones de {curso}. Tu examen final está listo: {enlace}",
+    "activa": true,
+    "correo": true,
+    "panel": true
+  },
+  {
+    "id": 3,
+    "nombre": "Resultado del examen",
+    "disparador": "Al calificar cada intento, con los intentos que le quedan",
+    "mensaje": "Hola {nombre}, tu calificación en {curso} fue {calificación}. Te quedan {intentos} intentos.",
+    "activa": true,
+    "correo": true,
+    "panel": true
+  },
+  {
+    "id": 4,
+    "nombre": "Constancia emitida",
+    "disparador": "Al aprobar, con el enlace de descarga y verificación",
+    "mensaje": "Felicidades, {nombre}. Tu constancia de {curso} ya está lista: {enlace}",
+    "activa": true,
+    "correo": true,
+    "panel": true
+  },
+  {
+    "id": 5,
+    "nombre": "Vencimiento del diplomado",
+    "disparador": "7 días y 1 día antes de la fecha límite del grupo",
+    "mensaje": "Hola {nombre}, tu diplomado {curso} vence el {fecha}. Te falta {pendiente}.",
+    "activa": true,
+    "correo": true,
+    "panel": false
+  },
+  {
+    "id": 6,
+    "nombre": "Recordatorio de webinar",
+    "disparador": "24 horas y 1 hora antes de la transmisión",
+    "mensaje": "Hola {nombre}, el webinar {título} empieza {cuándo}. Entra desde tu panel: {enlace}",
+    "activa": true,
+    "correo": true,
+    "panel": true
+  }
+]

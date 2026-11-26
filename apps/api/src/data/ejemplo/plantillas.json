@@ -1,0 +1,130 @@
+[
+  {
+    "id": "c1",
+    "nombre": "Constancia de diplomado",
+    "estado": "published",
+    "cursos": [
+      "oftalmologia",
+      "dermatoendocrino",
+      "diplomado-integral",
+      "inmunologia",
+      "inmunologia-felino",
+      "inmunologia-canino",
+      "diplomado-inmunologia"
+    ],
+    "vars": {
+      "nombre": {
+        "x": 50,
+        "y": 41.5,
+        "size": 40,
+        "on": true
+      },
+      "curso": {
+        "x": 50,
+        "y": 58,
+        "size": 19,
+        "on": true
+      },
+      "fecha": {
+        "x": 22,
+        "y": 84,
+        "size": 13,
+        "on": true
+      },
+      "folio": {
+        "x": 50,
+        "y": 84,
+        "size": 13,
+        "on": true
+      },
+      "qr": {
+        "x": 85,
+        "y": 81,
+        "size": 84,
+        "on": true
+      }
+    }
+  },
+  {
+    "id": "c2",
+    "nombre": "Constancia de curso",
+    "estado": "published",
+    "cursos": [
+      "kiroftal-2",
+      "odontologia",
+      "simposio-parasitologia-cardiologia",
+      "jornadas-cardiologia",
+      "parasitologia-practica"
+    ],
+    "vars": {
+      "nombre": {
+        "x": 50,
+        "y": 41.5,
+        "size": 40,
+        "on": true
+      },
+      "curso": {
+        "x": 50,
+        "y": 58,
+        "size": 19,
+        "on": true
+      },
+      "fecha": {
+        "x": 22,
+        "y": 84,
+        "size": 13,
+        "on": true
+      },
+      "folio": {
+        "x": 50,
+        "y": 84,
+        "size": 13,
+        "on": true
+      },
+      "qr": {
+        "x": 85,
+        "y": 81,
+        "size": 84,
+        "on": true
+      }
+    }
+  },
+  {
+    "id": "c3",
+    "nombre": "Constancia de webinar",
+    "estado": "draft",
+    "cursos": [],
+    "vars": {
+      "nombre": {
+        "x": 50,
+        "y": 41.5,
+        "size": 40,
+        "on": true
+      },
+      "curso": {
+        "x": 50,
+        "y": 58,
+        "size": 19,
+        "on": true
+      },
+      "fecha": {
+        "x": 22,
+        "y": 84,
+        "size": 13,
+        "on": true
+      },
+      "folio": {
+        "x": 50,
+        "y": 84,
+        "size": 13,
+        "on": true
+      },
+      "qr": {
+        "x": 85,
+        "y": 81,
+        "size": 84,
+        "on": true
+      }
+    }
+  }
+]

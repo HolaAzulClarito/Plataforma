@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cedula",
+    "nombre": "Verificar tu cédula",
+    "puntos": 200,
+    "frecuencia": "Una sola vez"
+  },
+  {
+    "id": "webinar",
+    "nombre": "Asistir a un webinar en vivo",
+    "puntos": 50,
+    "frecuencia": "Al entrar desde el sitio"
+  },
+  {
+    "id": "curso",
+    "nombre": "Terminar un curso",
+    "puntos": 300,
+    "frecuencia": "Al aprobar el examen final"
+  },
+  {
+    "id": "leccion",
+    "nombre": "Completar una lección",
+    "puntos": 20,
+    "frecuencia": "Por lección"
+  }
+]

@@ -4,7 +4,7 @@
    - El precio de un curso es informativo. El acceso lo da únicamente una inscripción "approved".
    - Constancia = todas las lecciones al 100 % Y examen final aprobado. */
 
-import type { Course, CourseModule, CourseState, ExamConfig, GradeCalc, Question, AnswerResult } from "./types";
+import type { Course, CourseModule, CourseState, EditorCourse, EditorQuestion, ExamConfig, GradeCalc, Question, AnswerResult } from "./types";
 
 export const EXAM_DEFAULTS: ExamConfig = {
   aprobatoria: 80,
@@ -135,3 +135,58 @@ export const averageRating = (courses: readonly Pick<Course, "rating" | "reviews
   const total = r.reduce((a, c) => a + c.reviews, 0);
   return total ? (r.reduce((a, c) => a + c.rating * c.reviews, 0) / total).toFixed(1) : "0.0";
 };
+
+/* ---------- Reglas v2.5 (API) ---------- */
+
+/* Intentos que le quedan al alumno; Infinity si el examen no tiene límite. */
+export const attemptsLeft = (max: number, used: number): number => (max === Infinity ? Infinity : Math.max(0, max - used));
+
+/* La constancia exige las dos condiciones: todas las lecciones al 100 % y el examen final aprobado. */
+export const canIssueCertificate = (allLessonsDone: boolean, examPassed: boolean): boolean => allLessonsDone && examPassed;
+
+/* Días sin entrar a partir de los cuales un alumno se considera inactivo en reportes y calificaciones. */
+export const INACTIVE_DAYS = 30;
+
+/* Extrae librería e ID de un video de Bunny Stream (URL de embed/play o "librería/ID"). */
+export const bunnyIds = (s: string | undefined): { lib: string; vid: string } | null => {
+  const t = String(s ?? "");
+  const m = /(?:iframe|player)\.mediadelivery\.net\/(?:embed|play)\/(\d+)\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/i.exec(t);
+  if (m) return { lib: m[1]!, vid: m[2]!.toLowerCase() };
+  const g = /^\s*(\d+)\s*[/:,\s]\s*([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\s*$/i.exec(t);
+  return g ? { lib: g[1]!, vid: g[2]!.toLowerCase() } : null;
+};
+
+export const DURATION_RE = /^\d{1,3}:\d{2}(:\d{2})?$/;
+
+/* Pendientes que impiden publicar un curso del editor. Lista vacía = se puede publicar. */
+export const editorIssues = (c: Pick<EditorCourse, "modulos" | "examen">): string[] => {
+  const p: string[] = [];
+  if (!c.modulos.some((m) => m.lecciones.length)) p.push("El curso no tiene lecciones");
+  c.modulos.forEach((m, a) =>
+    m.lecciones.forEach((l) => {
+      const w = `Módulo ${a + 1} · ${l.titulo}`;
+      if (!l.video.lib) p.push(`${w}: falta el video de Bunny`);
+      if (!DURATION_RE.test(l.dur || "")) p.push(`${w}: falta la duración del video`);
+    }),
+  );
+  const w = `Cierre · ${c.examen.titulo}`;
+  if (!c.examen.preguntas.length) p.push(`${w}: sin preguntas`);
+  c.examen.preguntas.forEach((q, k) => {
+    const n = k + 1;
+    if (!q.texto.trim()) p.push(`${w}: la pregunta ${n} no tiene texto`);
+    if ((q.tipo === "om" || q.tipo === "rm") && (!q.correctas.length || q.opciones.filter((o) => o.trim()).length < 2))
+      p.push(`${w}: la pregunta ${n} necesita al menos dos opciones y una correcta`);
+    if (q.tipo === "vf" && q.correctas.length !== 1) p.push(`${w}: la pregunta ${n} necesita marcar verdadero o falso`);
+    if (q.tipo === "rel" && q.pares.some((x) => !x[0].trim() || !x[1].trim())) p.push(`${w}: la pregunta ${n} tiene parejas incompletas`);
+  });
+  return p;
+};
+
+/* Convierte las preguntas del editor en preguntas calificables automáticamente.
+   Relacionar columnas y respuesta abierta las califica el equipo, así que no entran al examen automático. */
+export const gradableQuestions = (qs: readonly EditorQuestion[]): Question[] =>
+  qs.flatMap((q): Question[] => {
+    if (q.tipo === "vf") return [{ t: "vf", q: q.texto, o: ["Verdadero", "Falso"], c: q.correctas.slice(0, 1) }];
+    if (q.tipo === "om" || q.tipo === "rm") return [{ t: q.tipo, q: q.texto, o: q.opciones, c: q.correctas }];
+    return [];
+  });

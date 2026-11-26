@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "texto": "¿Qué prueba mide la producción de lágrima?",
+    "tipo": "om",
+    "tema": "Oftalmología",
+    "usos": 3
+  },
+  {
+    "id": 2,
+    "texto": "La prueba de Schirmer se realiza antes de aplicar cualquier colirio.",
+    "tipo": "vf",
+    "tema": "Oftalmología",
+    "usos": 2
+  },
+  {
+    "id": 3,
+    "texto": "Relaciona cada signo clínico con la estructura ocular afectada.",
+    "tipo": "rel",
+    "tema": "Oftalmología",
+    "usos": 1
+  },
+  {
+    "id": 4,
+    "texto": "Selecciona los componentes de la inmunidad innata.",
+    "tipo": "rm",
+    "tema": "Inmunología",
+    "usos": 2
+  },
+  {
+    "id": 5,
+    "texto": "Describe el abordaje inicial de un paciente con otitis externa.",
+    "tipo": "ab",
+    "tema": "Otitis",
+    "usos": 1
+  },
+  {
+    "id": 6,
+    "texto": "¿Qué hallazgo orienta a hipotiroidismo en un perro con alopecia?",
+    "tipo": "om",
+    "tema": "Dermatoendocrinología",
+    "usos": 1
+  }
+]

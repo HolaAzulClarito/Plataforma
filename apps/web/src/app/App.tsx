@@ -1,14 +1,41 @@
-/* Raíz de la app. El router, el layout y los providers (estado, i18n) se agregan en la tarea 5.
-   Por ahora solo confirma que el monorepo compila y que el paquete compartido se resuelve. */
-import { money, ivaLabel } from "@kiron/shared";
+/* Raíz de la app: router, i18n, efectos de ruta, Lenis y piezas globales (modal, toast, asistente). */
+import { BrowserRouter } from "react-router";
+import { ModalHost } from "../components/Modal";
+import { ToastHost } from "../components/Toast";
+import { Chatbot } from "../features/chatbot";
+import { I18nProvider, useT } from "../i18n";
+import { useLenis } from "../lib/motion";
+import { RouteEffects } from "./RouteEffects";
+import { AppRoutes } from "./routes";
+
+function SkipLink() {
+  const t = useT();
+  return (
+    <a className="sr skip" href="#view">
+      {t("Saltar al contenido")}
+    </a>
+  );
+}
+
+/* Todo lo que va dentro del router. Los tests lo montan con <MemoryRouter>. */
+export function AppShell() {
+  useLenis();
+  return (
+    <I18nProvider>
+      <SkipLink />
+      <RouteEffects />
+      <AppRoutes />
+      <ModalHost />
+      <ToastHost />
+      <Chatbot />
+    </I18nProvider>
+  );
+}
 
 export function App() {
   return (
-    <main style={{ fontFamily: "system-ui, sans-serif", padding: 32 }}>
-      <h1>Kirón · plataforma v2.5 en construcción</h1>
-      <p>
-        Estructura React lista. Ejemplo de formato compartido: {money(2999)} · {ivaLabel()}
-      </p>
-    </main>
+    <BrowserRouter>
+      <AppShell />
+    </BrowserRouter>
   );
 }

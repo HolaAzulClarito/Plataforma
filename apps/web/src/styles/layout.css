@@ -1,0 +1,29 @@
+/* Banner de demo (.demo-bar), encabezado (.hdr, .nav), menú móvil (.mnav).
+   Portado de legacy/assets/app.css (líneas 61-87). Conserva los nombres de clase del demo. */
+/* Banner demo */
+.demo-bar{background:var(--abyss);color:#dfe2da;font-size:12.5px;line-height:1.4;padding:9px 0;position:relative;z-index:60}
+.demo-bar .wrap{display:flex;align-items:center;gap:12px;justify-content:center;text-align:center}
+.demo-bar b{color:#fff;font-weight:600}
+.demo-bar .tag{background:var(--pp-red);color:#fff;font:700 10.5px/1 var(--f-camp);letter-spacing:.12em;padding:5px 9px;border-radius:50px}
+.demo-bar button{background:none;border:0;color:#dfe2da;padding:4px;display:flex}
+
+/* Header */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid rgba(223,226,218,.7);transition:box-shadow .3s}
+.hdr.scrolled{box-shadow:0 6px 24px rgba(44,66,10,.08)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;height:76px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{height:40px;width:auto}
+.nav{display:flex;gap:4px;margin-left:8px}
+.nav a{font:600 14px/1 var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--web-navy);padding:10px 14px;border-radius:var(--r-pill);transition:background .2s,color .2s;position:relative}
+.nav a:hover{background:var(--surface-alt)}
+.nav a.on{color:var(--web-cobalt,#3a5806)}
+.nav a.on:after{content:"";position:absolute;left:14px;right:14px;bottom:3px;height:2px;background:var(--pp-red);border-radius:2px}
+.hdr-actions{margin-left:auto;display:flex;align-items:center;gap:10px}
+.icon-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:#fff;display:inline-flex;align-items:center;justify-content:center;color:var(--web-navy);transition:background .2s}
+.icon-btn:hover{background:var(--surface-alt)}
+.lang{font:600 13px var(--f-body);color:var(--muted);padding:0 6px}
+.burger{display:none}
+.mnav{position:fixed;inset:0;background:#fff;z-index:80;padding:24px;display:none;flex-direction:column;gap:6px}
+.mnav.open{display:flex}
+.mnav a{font:700 26px/1.2 var(--f-display);color:var(--web-navy);padding:12px 0;border-bottom:1px solid var(--border)}
+

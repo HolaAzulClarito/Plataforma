@@ -1,0 +1,67 @@
+[
+  {
+    "nombre": "Dra. Laura Méndez",
+    "correo": "laura.mendez@clinica.mx",
+    "registro": "14/03/2025"
+  },
+  {
+    "nombre": "MVZ Paola Ruiz",
+    "correo": "paola.ruiz@correo-ejemplo.mx",
+    "registro": "02/02/2025"
+  },
+  {
+    "nombre": "Dr. Andrés Salinas",
+    "correo": "andres.salinas@correo-ejemplo.mx",
+    "registro": "19/06/2025"
+  },
+  {
+    "nombre": "MVZ Diego Herrera",
+    "correo": "diego.herrera@correo-ejemplo.mx",
+    "registro": "07/01/2026"
+  },
+  {
+    "nombre": "MVZ Sofía Cárdenas",
+    "correo": "sofia.cardenas@correo-ejemplo.mx",
+    "registro": "28/04/2026"
+  },
+  {
+    "nombre": "MVZ Jorge Palacios",
+    "correo": "jorge.palacios@correo-ejemplo.mx",
+    "registro": "11/07/2026"
+  },
+  {
+    "nombre": "MVZ Ana Lucía Torres",
+    "correo": "analucia.torres@correo-ejemplo.mx",
+    "registro": "30/08/2025"
+  },
+  {
+    "nombre": "MVZ Ricardo Ibarra",
+    "correo": "ricardo.ibarra@correo-ejemplo.mx",
+    "registro": "15/09/2026"
+  },
+  {
+    "nombre": "MVZ Fernanda Ortiz",
+    "correo": "fernanda.ortiz@correo-ejemplo.mx",
+    "registro": "03/10/2026"
+  },
+  {
+    "nombre": "MVZ Karla Medina",
+    "correo": "karla.medina@correo-ejemplo.mx",
+    "registro": "20/11/2026"
+  },
+  {
+    "nombre": "MVZ Óscar Lozano",
+    "correo": "oscar.lozano@correo-ejemplo.mx",
+    "registro": "21/11/2026"
+  },
+  {
+    "nombre": "MVZ Daniela Ríos",
+    "correo": "daniela.rios@correo-ejemplo.mx",
+    "registro": "16/11/2026"
+  },
+  {
+    "nombre": "MVZ Tomás Villa",
+    "correo": "tomas.villa@correo-ejemplo.mx",
+    "registro": "22/08/2026"
+  }
+]

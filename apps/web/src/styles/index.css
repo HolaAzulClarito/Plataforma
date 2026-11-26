@@ -1,0 +1,22 @@
+/* Estilos de la app. El ORDEN de importación replica la cascada de legacy/assets/app.css:
+   los bloques posteriores sobrescriben a los anteriores con la misma especificidad. No reordenes;
+   agrega estilos nuevos en extras.css (al final) o en el archivo del área que corresponda. */
+@import "./tokens.css";
+@import "./base.css";
+@import "./layout.css";
+@import "./sitio.css";
+@import "./academia.css";
+@import "./panel.css";
+@import "./admin.css";
+@import "./comunes.css";
+@import "./responsive.css";
+@import "./interacciones-v2.css";
+@import "./academia-panel-v3.css";
+@import "./chatbot.css";
+@import "./ajustes-v3-v7.css";
+@import "./design-system.css";
+@import "./ajustes-18-11.css";
+@import "./webinars.css";
+@import "./editor-curso.css";
+@import "./lms.css";
+@import "./extras.css";

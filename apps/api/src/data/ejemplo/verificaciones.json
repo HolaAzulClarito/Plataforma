@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nombre": "Dr. Andrés Salinas",
+    "cedula": "1234•••",
+    "verificado": false
+  },
+  {
+    "id": 2,
+    "nombre": "MVZ Paola Ruiz",
+    "cedula": "9876•••",
+    "verificado": false
+  },
+  {
+    "id": 3,
+    "nombre": "MVZ Diego Herrera",
+    "cedula": "4567•••",
+    "verificado": false
+  }
+]

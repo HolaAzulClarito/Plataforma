@@ -1,0 +1,41 @@
+[
+  {
+    "slug": "proximo",
+    "titulo": "¿Antojo, hábito o problema? El misterio detrás de la coprofagia",
+    "fecha": "15/12/2026",
+    "estado": "Próximo",
+    "registrados": 418,
+    "asistentes": null,
+    "nombres": []
+  },
+  {
+    "slug": null,
+    "titulo": "Webinar anterior · ejemplo 1",
+    "fecha": "12/11/2026",
+    "estado": "Concluido",
+    "registrados": 512,
+    "asistentes": 342,
+    "nombres": [
+      "MVZ Paola Ruiz",
+      "Dr. Andrés Salinas",
+      "MVZ Diego Herrera",
+      "MVZ Karla Jiménez",
+      "Dr. Ricardo Torres"
+    ]
+  },
+  {
+    "slug": null,
+    "titulo": "Webinar anterior · ejemplo 2",
+    "fecha": "22/10/2026",
+    "estado": "Concluido",
+    "registrados": 467,
+    "asistentes": 301,
+    "nombres": [
+      "MVZ Paola Ruiz",
+      "Dr. Andrés Salinas",
+      "MVZ Diego Herrera",
+      "MVZ Karla Jiménez",
+      "Dr. Ricardo Torres"
+    ]
+  }
+]

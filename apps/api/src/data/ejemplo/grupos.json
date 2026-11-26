@@ -1,0 +1,41 @@
+[
+  {
+    "id": 1,
+    "nombre": "Hospital Veterinario Norte · residentes",
+    "total": 14,
+    "curso": "diplomado-inmunologia",
+    "vence": "15/12/2026",
+    "avance": 62,
+    "miembros": [
+      "Dr. Andrés Salinas",
+      "MVZ Sofía Cárdenas",
+      "MVZ Fernanda Ortiz"
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "Generación Diplomado de Inmunología 2027-1",
+    "total": 38,
+    "curso": "diplomado-inmunologia",
+    "vence": "30/06/2027",
+    "avance": 18,
+    "miembros": [
+      "Dra. Laura Méndez",
+      "MVZ Ana Lucía Torres",
+      "MVZ Ricardo Ibarra"
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "Equipo clínico Bajío",
+    "total": 9,
+    "curso": "oftalmologia",
+    "vence": "31/01/2027",
+    "avance": 41,
+    "miembros": [
+      "MVZ Paola Ruiz",
+      "MVZ Diego Herrera",
+      "MVZ Jorge Palacios"
+    ]
+  }
+]

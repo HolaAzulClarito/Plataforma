@@ -1,0 +1,22 @@
+/* Estilos nuevos de la versión React (no existían en legacy/assets/app.css). Van al final de la cascada. */
+
+/* Skip-link visible al recibir foco (en el demo .sr nunca se mostraba). */
+.sr.skip:focus{position:fixed;left:16px;top:12px;width:auto;height:auto;clip:auto;overflow:visible;z-index:200;background:#fff;color:var(--ink);padding:10px 16px;border-radius:var(--r-pill);box-shadow:var(--shadow-pop)}
+#view:focus{outline:none}
+
+/* Menú desplegable: abierto por estado (aria-expanded) y cerrado con Escape aunque conserve el foco. */
+.nav-dd.open .dd{display:block}
+.nav-dd.dd-closed .dd{display:none}
+
+/* Leyenda de IVA junto al precio (corrección 1). */
+.iva-note{display:block;font-size:12px;font-weight:400;color:var(--muted);margin-top:2px}
+
+/* Mock del panel: textos neutros en lugar de cifras (corrección 2). */
+.pm-row b.pm-neutral{display:block;font:700 14px/1.3 var(--f-display);margin-top:4px}
+
+/* Webinar concluido (corrección 3): ocupa el lugar de la cuenta regresiva. */
+.wb-ended{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.2);color:#fff;font-weight:600;background:rgba(255,255,255,.06)}
+.wb-ended:hover{background:rgba(255,255,255,.12)}
+
+/* Estado de carga de la API. */
+.api-loading{color:var(--muted);font-size:14px;padding:12px 0}

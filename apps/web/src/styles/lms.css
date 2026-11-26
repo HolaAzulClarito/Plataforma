@@ -1,0 +1,99 @@
+/* LMS v2.4: exámenes, inscripciones, constancias.
+   Portado de legacy/assets/app.css (líneas 1187-1283). Conserva los nombres de clase del demo. */
+/* ---------- LMS v2.4 ---------- */
+.atabs a .ct{background:var(--pp-red);color:var(--ink);font:700 11px var(--f-camp);border-radius:50px;padding:2px 7px}
+.atabs.ce-tabs{margin:0 0 18px}
+.kpis.kpis-3{grid-template-columns:repeat(3,1fr)}
+.kpi-btn{text-align:left;font:inherit;cursor:pointer;border:1px solid var(--border)}
+.kpi-btn.on{border-color:var(--green-700);box-shadow:inset 0 0 0 1px var(--green-700)}
+.srch{display:flex;gap:6px;align-items:center}
+.srch .input{height:44px;min-width:220px}
+.bulk{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface-alt);margin-bottom:12px}
+.bulk .grow{flex:1}
+.bulk .bulk-n{font-size:13px;color:var(--muted)}
+.bulk select.input{width:auto;height:40px;min-width:210px}
+.tbl th.chk,.tbl td.chk{width:36px;padding-right:0}
+.tbl td.chk input,.bulk input[type=checkbox]{width:17px;height:17px;accent-color:var(--green-700)}
+.tbl tr.row-on td{background:var(--green-50)}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.pills button{border:0;background:transparent;font:600 14px var(--f-body);color:var(--muted);padding:6px 10px;border-radius:8px}
+.pills button em{font-style:normal;font-weight:400;color:var(--muted)}
+.pills button.on{color:var(--ink);background:var(--surface-alt);box-shadow:inset 0 -2px 0 var(--green-700)}
+.pick{max-height:300px;overflow:auto;border:1px solid var(--border);border-radius:12px;padding:0 14px}
+.pick .list-row{cursor:pointer}
+.pick .list-row input{width:17px;height:17px;accent-color:var(--green-700)}
+.set-list{padding:6px 22px}
+.set-row{display:flex;align-items:center;gap:18px;padding:16px 0;border-bottom:1px solid var(--border)}
+.set-row:last-child{border-bottom:0}
+.set-row>div:first-child{flex:1;min-width:0}
+.set-row b{display:block;color:var(--web-navy);font-size:15px}
+.set-row small{display:block;color:var(--muted);font-size:13px;line-height:1.5;margin-top:2px}
+.seg.seg-sm button{padding:7px 12px;font-size:13px}
+.auto-note{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--green-800);background:var(--green-50);border-radius:999px;padding:7px 14px}
+.lact{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.player .plock{display:flex;flex-direction:column;align-items:center;gap:10px;color:#fff;text-align:center;padding:0 24px}
+.player .plock .ico{width:34px;height:34px}
+.player .plock b{font:600 16px var(--f-body);color:#fff}
+.player .ptime{position:absolute;right:24px;bottom:30px;font:600 12.5px var(--f-body);color:#dfe2da}
+.player .bar i{transition:width .1s linear}
+.ccover .ccat.enrolled.pend{background:rgba(29,29,27,.86);color:#fff}
+.focus-bar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border)}
+.focus-bar .wrap{display:flex;align-items:center;gap:18px;height:60px}
+.focus-bar a{display:inline-flex;align-items:center;gap:8px;font:600 14px var(--f-body);color:var(--ink)}
+.focus-bar img{height:36px;width:auto;margin-left:auto}
+.focus-bar .fb-note{font-size:12px;color:var(--muted)}
+#view.is-focus .lesson{margin-top:22px}
+fieldset.q.hid{display:none}
+.ex-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:4px 0 14px}
+.ex-nav span{font:600 13.5px var(--f-body);color:var(--muted)}
+.ex-nav [hidden]{display:none}
+.res-big{display:flex;flex-direction:column;align-items:center;gap:6px;padding:18px 0 16px}
+.res-big small{color:var(--muted);font-size:13px}
+.res-big b{font:800 56px/1 var(--f-display);color:var(--ink)}
+.rows.rows-light{margin-top:6px}
+.q-res{display:grid;gap:8px;margin-top:14px}
+.q-res>div{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+.q-res .ico{width:18px;height:18px;margin-top:2px;flex:none}
+.q-res .ok .ico{color:var(--success)}
+.q-res .bad .ico{color:var(--danger)}
+.q-res b{display:block;font-size:14px;color:var(--web-navy)}
+.q-res small{color:var(--muted);font-size:12.5px}
+.ce-basics{padding:24px}
+.ce-prev{margin:-6px 0 18px;border:1px solid var(--border);border-radius:12px;padding:10px 14px}
+.ce-prev summary{cursor:pointer;font:600 13.5px var(--f-body);color:var(--muted)}
+.ce-desc{margin-top:10px;font-size:14.5px}
+.ce-desc img{max-width:100%;height:auto;border-radius:8px}
+.ce-desc h2,.ce-desc h3{margin:12px 0 6px}
+.ce-desc p{margin:0 0 8px}
+.ce-cover{width:160px;aspect-ratio:1;object-fit:cover;border-radius:12px;border:1px solid var(--border)}
+.ce-qopts{display:flex;flex-wrap:wrap;gap:8px 20px;margin:4px 0 14px}
+.ce-lmeta small{font-size:11.5px}
+label.icon-btn{cursor:pointer}
+.cert-ed{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}
+.cert-side{padding:20px}
+.cert-courses{max-height:220px;overflow:auto;display:grid;gap:6px;padding-right:4px}
+.cert-courses .ce-chk{align-items:flex-start;font-size:13px;line-height:1.35}
+.cert-sheet{position:relative;container-type:inline-size;aspect-ratio:11/8.5;background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden;user-select:none;box-shadow:var(--shadow-card)}
+.cert-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cert-base{position:absolute;inset:3.5cqw;border:.35cqw solid var(--green-700);display:flex;flex-direction:column;align-items:center;padding-top:4cqw;color:var(--muted)}
+.cert-base img{height:7.5cqw;width:auto}
+.cert-base b{font:700 2.4cqw var(--f-display);letter-spacing:.4em;color:var(--green-800);margin-top:2.4cqw}
+.cert-base span{font-size:1.7cqw;margin-top:2.6cqw}
+.cert-base i{display:block;width:46cqw;border-bottom:.15cqw solid var(--border-strong);margin-top:9.6cqw}
+.cert-base em{font-style:normal;font-size:1.6cqw;margin-top:1.6cqw}
+.cert-var{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;font-family:var(--f-display);font-weight:700;color:var(--ink);line-height:1.15;text-align:center}
+.cert-var.qr svg{width:100%;height:auto;display:block}
+.cert-sheet.edit .cert-var{cursor:grab;outline:1.5px dashed transparent;outline-offset:4px;border-radius:4px;touch-action:none}
+.cert-sheet.edit .cert-var:hover{outline-color:var(--border-strong)}
+.cert-sheet.edit .cert-var.on{outline-color:var(--focus);background:rgba(0,93,130,.06)}
+.cert-sheet.edit .cert-var:active{cursor:grabbing}
+.doc .cert-sheet{box-shadow:none}
+@media print{.doc .cert-sheet{border:0}}
+@media (max-width:1100px){.cert-ed{grid-template-columns:1fr}}
+@media (max-width:760px){.kpis.kpis-3{grid-template-columns:1fr}.srch .input{min-width:0;width:100%}.srch{width:100%}.bulk select.input{min-width:0;width:100%}.set-row{flex-wrap:wrap}}
+.modal [hidden],.bulk [hidden]{display:none!important}
+.tbl .state{white-space:nowrap}
+.tbl td.nowrap{white-space:nowrap}
+.list-row .end b{white-space:nowrap}
+.tool-row select.input{max-width:340px}
+

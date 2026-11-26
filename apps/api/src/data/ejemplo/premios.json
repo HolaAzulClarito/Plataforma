@@ -1,0 +1,26 @@
+[
+  {
+    "id": "oftalmologia",
+    "nombre": "Bloque 1 · Oftalmología y otitis",
+    "puntos": 3000,
+    "icono": "graduation-cap"
+  },
+  {
+    "id": "dermatoendocrino",
+    "nombre": "Bloque 2 · Dermatoendocrinología",
+    "puntos": 3000,
+    "icono": "graduation-cap"
+  },
+  {
+    "id": "promo-3x2",
+    "nombre": "Promoción 3×2 en un producto participante",
+    "puntos": 3000,
+    "icono": "gift"
+  },
+  {
+    "id": "webinar-vip",
+    "nombre": "Lugar preferente en webinar en vivo",
+    "puntos": 500,
+    "icono": "video"
+  }
+]

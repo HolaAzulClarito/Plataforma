@@ -1,0 +1,26 @@
+{
+  "ajustes": {
+    "enfoque": false,
+    "resumen": true,
+    "adminSinInsc": true,
+    "login": false,
+    "expira": false,
+    "pct": 100,
+    "ocultar": true
+  },
+  "examenes": {
+    "oftalmologia": {
+      "intentos": 2
+    },
+    "inmunologia": {
+      "intentos": 2
+    }
+  },
+  "drip": {
+    "dermatoendocrino": {
+      "from": 6,
+      "fecha": "2027-01-08"
+    }
+  },
+  "extra": {}
+}

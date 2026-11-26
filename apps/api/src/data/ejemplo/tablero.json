@@ -1,0 +1,50 @@
+{
+  "kpis": [
+    {
+      "nombre": "Médicos activos esta semana",
+      "valor": "412",
+      "tendencia": "+18%"
+    },
+    {
+      "nombre": "Inscripciones a cursos",
+      "valor": "186",
+      "tendencia": "+12%"
+    },
+    {
+      "nombre": "Asistentes al último webinar",
+      "valor": "342",
+      "tendencia": "+14%"
+    },
+    {
+      "nombre": "Constancias emitidas",
+      "valor": "214",
+      "tendencia": "+9%"
+    }
+  ],
+  "asistentesPorMes": [
+    {
+      "mes": "May",
+      "asistentes": 178
+    },
+    {
+      "mes": "Jun",
+      "asistentes": 209
+    },
+    {
+      "mes": "Jul",
+      "asistentes": 239
+    },
+    {
+      "mes": "Ago",
+      "asistentes": 267
+    },
+    {
+      "mes": "Sep",
+      "asistentes": 301
+    },
+    {
+      "mes": "Oct",
+      "asistentes": 342
+    }
+  ]
+}

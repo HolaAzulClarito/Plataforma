@@ -183,3 +183,220 @@ export type Video = [string, string, string?];
 export type PointsRule = [string, number, string];
 /* [nombre del premio, puntos, icono, id] */
 export type Reward = [string, number, string, string];
+
+/* ---------- Academia v2.5 (API) ---------- */
+/* Ajustes globales de la academia: aplican a todos los cursos por igual. */
+export interface AcademySettings {
+  enfoque: boolean;
+  resumen: boolean;
+  adminSinInsc: boolean;
+  login: boolean;
+  expira: boolean;
+  pct: number;
+  /* true = el alumno ve solo su calificación final, nunca el detalle de respuestas. */
+  ocultar: boolean;
+}
+
+export interface Student {
+  nombre: string;
+  /* Correos ficticios @correo-ejemplo.mx, salvo el médico de demo. */
+  correo: string;
+  /* Fecha de registro DD/MM/AAAA. */
+  registro: string;
+}
+
+export type AttemptRequestState = "pendiente" | "autorizado" | "rechazado";
+
+/* Solicitud de intento adicional del examen final. */
+export interface AttemptRequest {
+  id: number;
+  u: string;
+  s: string;
+  estado: AttemptRequestState;
+  f: string;
+}
+
+export interface Group {
+  id: number;
+  nombre: string;
+  /* Total de alumnos del grupo (los miembros listados son una muestra de ejemplo). */
+  total: number;
+  /* Slug del curso asignado ("" = sin asignar). */
+  curso: string;
+  /* Fecha límite DD/MM/AAAA ("" = sin fecha). */
+  vence: string;
+  avance: number;
+  miembros: string[];
+}
+
+export type EditorQuestionType = "om" | "vf" | "rm" | "rel" | "ab";
+
+export interface BankQuestion {
+  id: number;
+  texto: string;
+  tipo: EditorQuestionType;
+  tema: string;
+  usos: number;
+}
+
+export interface Automation {
+  id: number;
+  nombre: string;
+  disparador: string;
+  mensaje: string;
+  activa: boolean;
+  correo: boolean;
+  panel: boolean;
+}
+
+export type CertificateKind = "curso" | "diplomado" | "webinar";
+export type CertificateOrigin = "migrada" | "academia" | "webinar";
+
+/* Constancia emitida: registro propio que no cambia aunque cambie la plantilla o el curso. */
+export interface Certificate {
+  folio: string;
+  u: string;
+  tipo: CertificateKind;
+  /* Slug del curso o del webinar. */
+  ref: string;
+  titulo: string;
+  fecha: string;
+  origen: CertificateOrigin;
+  plantilla: string | null;
+}
+
+/* ---------- Club MVZ v2.5 ---------- */
+export type RuleId = "cedula" | "webinar" | "curso" | "leccion";
+
+export interface ClubRule {
+  id: RuleId;
+  nombre: string;
+  puntos: number;
+  frecuencia: string;
+}
+
+/* Si el id coincide con el slug de un curso, el canje inscribe al médico en ese curso. */
+export interface ClubReward {
+  id: string;
+  nombre: string;
+  puntos: number;
+  icono: string;
+}
+
+/* ---------- Médicos y páginas ---------- */
+export interface CedulaVerification {
+  id: number;
+  nombre: string;
+  /* Cédula enmascarada. */
+  cedula: string;
+  verificado: boolean;
+}
+
+export type PageState = "Publicada" | "Borrador";
+
+export interface SitePage {
+  id: number;
+  titulo: string;
+  url: string;
+  estado: PageState;
+  /* Última edición DD/MM/AAAA. */
+  edicion: string;
+  bloques: string[];
+  seo: { titulo: string; descripcion: string; idioma: Lang };
+}
+
+/* ---------- Webinars v2.5 ---------- */
+export type WebinarMode = "cloudflare" | "youtube";
+
+export interface WebinarSummary {
+  slug: string;
+  titulo: string;
+  subtitulo: string;
+  tituloEn: string;
+  subtituloEn: string;
+  grado: string;
+  ponente: string;
+  /* Inicio con zona horaria, ISO 8601. */
+  inicio: string;
+  /* DD/MM/AAAA */
+  fecha: string;
+  /* HH:MM, centro de México. */
+  hora: string;
+  /* Minutos. */
+  duracion: number;
+  /* Minutos en vivo para contar asistencia. */
+  umbral: number;
+  flyer: string | null;
+  modo: WebinarMode;
+  publicado: boolean;
+}
+
+/* ---------- Editor de cursos nuevos ---------- */
+export type CourseKind = "Curso" | "Diplomado";
+
+export interface EditorQuestion {
+  tipo: EditorQuestionType;
+  texto: string;
+  puntos: number;
+  requerida: boolean;
+  mezclar: boolean;
+  explicacion: string;
+  opciones: string[];
+  correctas: number[];
+  pares: [string, string][];
+  modelo: string;
+}
+
+export interface EditorAttachment {
+  nombre: string;
+  /* Bytes. */
+  tam: number;
+  key: string;
+}
+
+export interface EditorLesson {
+  titulo: string;
+  /* Video de Bunny Stream: solo librería e ID. El token de reproducción se firma en el servidor. */
+  video: { lib: string; vid: string };
+  /* Duración min:seg. */
+  dur: string;
+  adjuntos: EditorAttachment[];
+  /* Fecha ISO AAAA-MM-DD; vacío = sin restricción. */
+  desbloqueo: string;
+}
+
+export interface EditorModule {
+  nombre: string;
+  lecciones: EditorLesson[];
+}
+
+/* Examen final del curso (uno solo, en el módulo de cierre). */
+export interface EditorExam extends ExamConfig {
+  titulo: string;
+  preguntas: EditorQuestion[];
+}
+
+export interface EditorCourse {
+  id: string;
+  /* Slug público, fijo desde la creación. */
+  slug: string;
+  titulo: string;
+  tituloEn: string;
+  tipo: CourseKind;
+  categoria: string;
+  instructor: string;
+  nivel: string;
+  /* MXN enteros, informativos. */
+  precioRegular: number;
+  precio: number;
+  estado: CourseState;
+  /* Fecha de creación DD/MM/AAAA. */
+  fecha: string;
+  /* Fecha ISO de publicación programada. */
+  fechaProg: string;
+  /* HTML limpio en el servidor con una lista de etiquetas permitidas. */
+  descripcion: string;
+  portada: string | null;
+  modulos: EditorModule[];
+  examen: EditorExam;
+}

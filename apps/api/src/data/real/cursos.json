@@ -1,0 +1,141 @@
+[
+  {
+    "slug": "oftalmologia",
+    "title": "Bloque 1 · Oftalmología y otitis",
+    "cat": "Diplomado Integral",
+    "lessons": 32,
+    "rating": 4.9,
+    "reviews": 131,
+    "price": 2999,
+    "was": 4999,
+    "tone": "a",
+    "img": "https://kironmexico.com/wp-content/uploads/2026/07/BLOQUE-I_pages-to-jpg-0001-750x750.webp"
+  },
+  {
+    "slug": "dermatoendocrino",
+    "title": "Bloque 2 · Dermatoendocrinología: del signo clínico al diagnóstico",
+    "cat": "Diplomado Integral",
+    "lessons": 10,
+    "rating": 0,
+    "reviews": 0,
+    "price": 2999,
+    "was": 4999,
+    "tone": "c",
+    "img": "https://kironmexico.com/wp-content/uploads/2026/07/1-portada-1-750x750.jpeg"
+  },
+  {
+    "slug": "diplomado-integral",
+    "title": "Examen final · Diplomado Integral en Especialidades Clínicas Veterinarias",
+    "cat": "Diplomado Integral",
+    "lessons": 1,
+    "rating": 0,
+    "reviews": 0,
+    "price": 2999,
+    "was": 4999,
+    "tone": "b",
+    "img": "https://kironmexico.com/wp-content/uploads/2026/07/Portada-Principal-750x750.webp"
+  },
+  {
+    "slug": "inmunologia",
+    "title": "Módulo 1 · Donde todo comienza: las bases de la defensa en perros y gatos",
+    "cat": "Diplomado de Inmunología",
+    "lessons": 33,
+    "rating": 4.9,
+    "reviews": 71,
+    "price": 2999,
+    "was": 4999,
+    "tone": "e",
+    "img": "https://kironmexico.com/wp-content/uploads/2025/05/Diplomado-inmunologia_MOD1-750x750.jpg"
+  },
+  {
+    "slug": "inmunologia-felino",
+    "title": "Módulo 2 · Sistema protector felino: abordaje clínico de su respuesta biológica",
+    "cat": "Diplomado de Inmunología",
+    "lessons": 28,
+    "rating": 5,
+    "reviews": 44,
+    "price": 2999,
+    "was": 4999,
+    "tone": "d",
+    "img": "https://kironmexico.com/wp-content/uploads/2025/07/Diplomado-inmunologia__MOD2-750x750.webp"
+  },
+  {
+    "slug": "inmunologia-canino",
+    "title": "Módulo 3 · Sistema protector canino: abordaje clínico de su respuesta biológica",
+    "cat": "Diplomado de Inmunología",
+    "lessons": 29,
+    "rating": 4.7,
+    "reviews": 40,
+    "price": 2999,
+    "was": 4999,
+    "tone": "f",
+    "img": "https://kironmexico.com/wp-content/uploads/2025/10/Diplomado-inmunologia__MOD3-750x750.webp"
+  },
+  {
+    "slug": "diplomado-inmunologia",
+    "title": "Examen final · Diplomado de Inmunología",
+    "cat": "Diplomado de Inmunología",
+    "lessons": 1,
+    "rating": 4.8,
+    "reviews": 32,
+    "price": 2999,
+    "was": 4999,
+    "tone": "b",
+    "img": "https://kironmexico.com/wp-content/uploads/2026/03/Diplomado-inmunologiia_1_Portada-750x750.jpg"
+  },
+  {
+    "slug": "kiroftal-2",
+    "title": "KirOftal 2.0 · Lo esencial en oftalmología veterinaria",
+    "cat": "Oftalmología",
+    "lessons": 33,
+    "rating": 4.9,
+    "reviews": 122,
+    "price": 0,
+    "tone": "a",
+    "img": "https://kironmexico.com/wp-content/uploads/2024/12/Slider-KirOftal-2_mobil-1-750x750.jpg"
+  },
+  {
+    "slug": "odontologia",
+    "title": "Temas selectos de odontología",
+    "cat": "Odontología",
+    "lessons": 17,
+    "rating": 4.8,
+    "reviews": 132,
+    "price": 0,
+    "tone": "c",
+    "img": "https://kironmexico.com/wp-content/uploads/2024/10/Portada-750x750.jpg"
+  },
+  {
+    "slug": "simposio-parasitologia-cardiologia",
+    "title": "Simposio de parasitología y cardiología",
+    "cat": "Simposio",
+    "lessons": 1,
+    "rating": 4.9,
+    "reviews": 31,
+    "price": 0,
+    "tone": "e",
+    "img": "https://kironmexico.com/wp-content/uploads/2024/06/SIMPOSIO-MEDIDA-1-750x544.png"
+  },
+  {
+    "slug": "jornadas-cardiologia",
+    "title": "Jornadas de cardiología básica",
+    "cat": "Cardiología",
+    "lessons": 18,
+    "rating": 4.9,
+    "reviews": 141,
+    "price": 0,
+    "tone": "d",
+    "img": "https://kironmexico.com/wp-content/uploads/2024/02/Jornadas_Cardiologia_MiniaturaEvento.png"
+  },
+  {
+    "slug": "parasitologia-practica",
+    "title": "Parasitología práctica: identificando enemigos ocultos",
+    "cat": "Parasitología",
+    "lessons": 20,
+    "rating": 5,
+    "reviews": 7,
+    "price": 0,
+    "tone": "f",
+    "img": "https://kironmexico.com/wp-content/uploads/2022/03/Curso-de-Parasitologia-2022-Kiron.jpg"
+  }
+]
