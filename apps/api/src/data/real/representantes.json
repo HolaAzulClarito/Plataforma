@@ -1,0 +1,168 @@
+{
+  "zonas": [
+    {
+      "zone": "Centro",
+      "states": "Ciudad de México, Área Metropolitana, Toluca, Morelos, Guerrero, Querétaro, Guanajuato y San Luis Potosí",
+      "people": [
+        [
+          "Angie Elizabeth Vega Vidal",
+          "Supervisor de negocios",
+          "avega",
+          "55 4186 0601"
+        ],
+        [
+          "Cruz Daniel Juárez Acosta",
+          "Promotor",
+          "cjuarez",
+          "56 6225 8750"
+        ],
+        [
+          "Griselda Tello",
+          "",
+          "gtello",
+          "55 7936 8789"
+        ],
+        [
+          "Liliana García",
+          "",
+          "lgarcia",
+          "55 7929 3704"
+        ],
+        [
+          "Rosario Salcedo",
+          "",
+          "msalcedo",
+          "56 4170 8513"
+        ],
+        [
+          "Víctor García",
+          "",
+          "vgarcia",
+          "55 8051 6788"
+        ],
+        [
+          "Gustavo Alberto Cuenca Pérez",
+          "",
+          "gcuenca",
+          "55 4568 8670"
+        ]
+      ]
+    },
+    {
+      "zone": "Norte",
+      "states": "Nuevo León, Baja California, Baja California Sur y Chihuahua",
+      "people": [
+        [
+          "Érika Carrillo",
+          "Coordinadora",
+          "ecarrillo",
+          "55 7936 8763"
+        ],
+        [
+          "Analú Contreras",
+          "",
+          "acontreras",
+          "55 8051 6794"
+        ],
+        [
+          "Noé Gerardo Carrión",
+          "",
+          "ncarrion",
+          "55 8010 8795"
+        ],
+        [
+          "Nora Elizabeth",
+          "",
+          "ncerda",
+          "56 5111 0767"
+        ]
+      ]
+    },
+    {
+      "zone": "Sur",
+      "states": "Península de Yucatán, Puebla, Tlaxcala, Veracruz, Tabasco, Chiapas y Oaxaca",
+      "people": [
+        [
+          "Cristian Ochoa",
+          "Supervisor",
+          "cochoa",
+          "55 8051 6796"
+        ],
+        [
+          "Andrea G. Cantón",
+          "",
+          "acanton",
+          "55 5409 5273"
+        ],
+        [
+          "Daniela González",
+          "",
+          "dgonzalez",
+          "55 4010 8397"
+        ],
+        [
+          "Manuel Fabián Oseguera Soberano",
+          "",
+          "moseguera",
+          "56 4160 8324"
+        ],
+        [
+          "Gabriel Yair Interiano Méndez",
+          "",
+          "yinteriano",
+          "44 3128 1774"
+        ]
+      ]
+    },
+    {
+      "zone": "Occidente",
+      "states": "Jalisco, Nayarit, Colima, Sinaloa, Aguascalientes y Michoacán",
+      "people": [
+        [
+          "Andrea Sandoval",
+          "Coordinadora",
+          "asandoval",
+          "55 4145 3898"
+        ],
+        [
+          "Alejandra Muñoz",
+          "",
+          "acastaneda",
+          "55 2704 8137"
+        ],
+        [
+          "Miguel Ángel Flores",
+          "",
+          "mflores",
+          "55 7929 3706"
+        ],
+        [
+          "Alejandra García Zamora",
+          "",
+          "agarcia",
+          "55 4357 2949"
+        ]
+      ]
+    }
+  ],
+  "nacionales": [
+    [
+      "Maritza Hernández",
+      "Gerente Comercial Nacional",
+      "mhernandez",
+      "999 414 5025"
+    ],
+    [
+      "Carlos Martínez Ayala",
+      "Asesor Técnico",
+      "cmartinez",
+      "55 2219 2604"
+    ],
+    [
+      "Elías Santiago",
+      "Gerente de Marketing",
+      "esantiago",
+      "55 4370 5139"
+    ]
+  ]
+}

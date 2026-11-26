@@ -1,0 +1,14 @@
+{
+  "name": "@kiron/shared",
+  "version": "2.5.0",
+  "private": true,
+  "type": "module",
+  "description": "Tipos de dominio, reglas del LMS y formatos compartidos por web y api.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  }
+}

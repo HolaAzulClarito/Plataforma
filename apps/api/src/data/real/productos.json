@@ -1,0 +1,698 @@
+[
+  {
+    "name": "Vibix Rabia",
+    "slug": "vibix-rabia",
+    "cat": "Biológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2026/10/VIBIX-RABIA-300x300.webp",
+    "isNew": true,
+    "featured": true
+  },
+  {
+    "name": "CICATRYVET Spray Tx",
+    "slug": "cicatryvet-spray-tx",
+    "cat": "Dermatológicos tópicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2026/09/CICATRIVET-SPRAY-300x300.webp",
+    "isNew": true,
+    "featured": true
+  },
+  {
+    "name": "SPIROCARD DUO 2.5",
+    "slug": "spirocard-duo-2-5",
+    "cat": "Cardiológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2026/08/SPIROCARD-DUO-2-300x300.webp",
+    "isNew": true,
+    "featured": true
+  },
+  {
+    "name": "SPIROCARD DUO 10",
+    "slug": "spirocard-duo-10",
+    "cat": "Cardiológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2026/08/SPIROCARD-DUO-10-300x300.webp",
+    "isNew": true,
+    "featured": true,
+    "active": "Benazepril + Espironolactona",
+    "form": "Tabletas",
+    "species": [
+      "Caninos"
+    ],
+    "pres": "Caja con 30 tabletas",
+    "via": "Oral",
+    "reg": "Q-0790-188",
+    "desc": "Vasodilatador y antihipertensivo, antagonista de la aldosterona e inhibidor de la enzima convertidora de angiotensina (IECA).",
+    "related": [
+      "spirocard-duo-2-5",
+      "spirocard-duo-5",
+      "cardiobendan-1-25-mg",
+      "cardiobendan-5-mg"
+    ]
+  },
+  {
+    "name": "Acalma Cats Difusor + Recambio",
+    "slug": "acalma-difusor-recambio",
+    "cat": "Etológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2025/12/ACALMA-Difusor-Recambio-VetNova-300x300.webp"
+  },
+  {
+    "name": "Acalma Cats Recambio 48ml.",
+    "slug": "acalma-recambio-48ml",
+    "cat": "Etológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2025/12/ACALMA-Recambio-VetNova-300x300.webp"
+  },
+  {
+    "name": "Acalma Cats Spray 60ml.",
+    "slug": "acalma-spray-60ml",
+    "cat": "Etológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2025/12/ACALMA-Spray-VetNova-300x300.webp"
+  },
+  {
+    "name": "Acalma Dogs Spray",
+    "slug": "acalma-dogs-spray",
+    "cat": "Etológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2025/12/ACALMA®-Dogs-SprayEstuche-VN-1223-300x300.webp"
+  },
+  {
+    "name": "Azitrokir M Suspensión oral",
+    "slug": "azitrokir-m-suspension-oral",
+    "cat": "Antibióticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/Azitrokir-M-Susp-2-300x300.png"
+  },
+  {
+    "name": "Azitrokir M Tabletas 100",
+    "slug": "azitrokir-m-tabletas-100",
+    "cat": "Antibióticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/02/Azitrokir-M100-300x300.png"
+  },
+  {
+    "name": "Azitrokir M Tabletas 200",
+    "slug": "azitrokir-m-tabletas-200",
+    "cat": "Antibióticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Azitrokir-M200-300x300.png"
+  },
+  {
+    "name": "Azitrokir M Tabletas 400",
+    "slug": "azitrokir-m-tabletas-400",
+    "cat": "Antibióticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Azitrokir-M400-300x300.png"
+  },
+  {
+    "name": "BioEst-3V",
+    "slug": "bioest-3v",
+    "cat": "Estimulantes del Apetito y Gastroentéricos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/BioEst-3V-2-300x300.png"
+  },
+  {
+    "name": "CardioBendan 1.25 mg",
+    "slug": "cardiobendan-1-25-mg",
+    "cat": "Cardiológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2023/02/CardioBendan-Frasco-Azul-300x300.png"
+  },
+  {
+    "name": "CardioBendan 5 mg",
+    "slug": "cardiobendan-5-mg",
+    "cat": "Cardiológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2023/02/CardioBendan-Frasco-Rosa-300x300.png"
+  },
+  {
+    "name": "Ciclomun oral",
+    "slug": "ciclomun-oral",
+    "cat": "Dermatológicos orales",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/06/CICLOMUN-Mockup-300x300.png"
+  },
+  {
+    "name": "Ciclosporin Ungüento",
+    "slug": "ciclosporin-unguento",
+    "cat": "Oftálmicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Ciclosporin_Ungüento_5g-300x300.png"
+  },
+  {
+    "name": "COX-II Meloxicam 1 mg",
+    "slug": "cox-ii-meloxicam-1-mg",
+    "cat": "Hospitalarios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/06/COX-II_1MG_600X600-300x300.png"
+  },
+  {
+    "name": "COX-II Meloxicam 2.5 mg",
+    "slug": "cox-ii-meloxicam-2-5-mg",
+    "cat": "Hospitalarios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/06/COX-II_2.5MG_600X600-300x300.png"
+  },
+  {
+    "name": "COX-II Meloxicam 4 mg",
+    "slug": "cox-ii-meloxicam-4-mg",
+    "cat": "Hospitalarios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/06/COX-II_4MG_600X600-300x300.png"
+  },
+  {
+    "name": "COX-II Solución inyectable",
+    "slug": "cox-ii-solucion-inyectable",
+    "cat": "Analgésicos y Antiinflamatorios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/02/Cox-II-Iny-300x300.png"
+  },
+  {
+    "name": "COX-II Suspensión oral",
+    "slug": "cox-ii-suspension-oral",
+    "cat": "Analgésicos y Antiinflamatorios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/02/Cox-II-Susp-1-300x300.png"
+  },
+  {
+    "name": "COX-II Tabletas 1 mg",
+    "slug": "cox-ii-tabletas-1-mg",
+    "cat": "Analgésicos y Antiinflamatorios",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/Cox-II-1-300x300.png"
+  },
+  {
+    "name": "COX-II Tabletas 2.5 mg",
+    "slug": "cox-ii-tabletas-2-5-mg",
+    "cat": "Analgésicos y Antiinflamatorios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Cox-II-2-300x300.png"
+  },
+  {
+    "name": "COX-II Tabletas 4 mg",
+    "slug": "cox-ii-tabletas-4-mg",
+    "cat": "Analgésicos y Antiinflamatorios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Cox-II-4-300x300.png"
+  },
+  {
+    "name": "Dental Plus",
+    "slug": "dental-plus",
+    "cat": "Higiene bucal",
+    "img": "https://kironmexico.com/wp-content/uploads/2024/05/CAJA_Dental-Plus-300x300.png"
+  },
+  {
+    "name": "Deter Coprofagia 20",
+    "slug": "deter-coprofagia-20",
+    "cat": "Etológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2023/05/DETER_20-300x300.webp"
+  },
+  {
+    "name": "Deter Coprofagia 5",
+    "slug": "deter-coprofagia-5",
+    "cat": "Etológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2023/05/DETER_5-300x300.webp"
+  },
+  {
+    "name": "Dreams Aqua Fragancia",
+    "slug": "dreams-aqua-fragancia",
+    "cat": "Fragancias Kirón",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/10/Dreams_AQUA-1-300x300.png"
+  },
+  {
+    "name": "Gastrozol 20",
+    "slug": "gastrozol-20",
+    "cat": "Estimulantes del Apetito y Gastroentéricos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Gastrozol-20-300x300.png"
+  },
+  {
+    "name": "Gastrozol 5",
+    "slug": "gastrozol-5",
+    "cat": "Estimulantes del Apetito y Gastroentéricos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/Gastrozol-5-2-300x300.png"
+  },
+  {
+    "name": "Jabón insecticida",
+    "slug": "jabon-insecticida",
+    "cat": "Ectoparasiticidas",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/CA_JAB_PD_INSECTICIDA-300x300.png"
+  },
+  {
+    "name": "KetoXiderm",
+    "slug": "ketoxiderm",
+    "cat": "Dermatológicos tópicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/03/KETOXIDERM_350ml-300x300.png"
+  },
+  {
+    "name": "Kir-Anthel 10",
+    "slug": "kir-anthel10",
+    "cat": "Endoparasiticidas",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Kir-Anthel-10-1-300x300.png"
+  },
+  {
+    "name": "Kir-Anthel 2.5",
+    "slug": "kir-anthel-2-5",
+    "cat": "Endoparasiticidas",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/Kir-Anthel-25-2-300x300.png"
+  },
+  {
+    "name": "Kir-Anthel 35",
+    "slug": "kir-anthel-35",
+    "cat": "Endoparasiticidas",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Kir-Anthel-35-1-300x300.png"
+  },
+  {
+    "name": "Kir-Anthel Puppies 200ml",
+    "slug": "kir-anthel-puppies-200ml",
+    "cat": "Endoparasiticidas",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/Puppys-200mL-2-300x300.png"
+  },
+  {
+    "name": "Kir-Anthel Puppies 25ml",
+    "slug": "kir-anthel-puppies-25ml",
+    "cat": "Endoparasiticidas",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Kir-Anthel-suspensión-300x300.png"
+  },
+  {
+    "name": "Kir–Anthel Max 10",
+    "slug": "kir-anthel-max-10",
+    "cat": "Endoparasiticidas",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/07/Kir-Anthel-MAX-10-20tabs-300x300.png"
+  },
+  {
+    "name": "Kir–Anthel Max 2.5",
+    "slug": "kir-anthel-max-2-5",
+    "cat": "Endoparasiticidas",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/07/Kir-Anthel-MAX-2.5-20tabs-300x300.png"
+  },
+  {
+    "name": "Kir–Anthel Max 30",
+    "slug": "kir-anthel-max-30",
+    "cat": "Endoparasiticidas",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/07/Kir-Anthel-MAX-30-10tabs-300x300.png"
+  },
+  {
+    "name": "Kir–Anthel Max Suspensión",
+    "slug": "kir-anthel-max-suspension-200-ml",
+    "cat": "Endoparasiticidas",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/07/KirAnthel-Max-Susp-200mL-300x300.webp"
+  },
+  {
+    "name": "Kir–Anthel Max Suspensión Gato",
+    "slug": "kir-anthel-max-suspension-25ml",
+    "cat": "Endoparasiticidas",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/07/KirAnthel-Max-Susp-25mLgato-300x300.webp"
+  },
+  {
+    "name": "Kir–Anthel Max Suspensión Perro",
+    "slug": "kir-anthel-max-suspension-perro-25ml",
+    "cat": "Endoparasiticidas",
+    "img": "https://kironmexico.com/wp-content/uploads/2022/10/KirAnthel-Max-Susp-25mL-300x300.webp"
+  },
+  {
+    "name": "KiroBencil",
+    "slug": "kirobencil",
+    "cat": "Dermatológicos tópicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/03/KIROBENCIL_350ml-300x300.png"
+  },
+  {
+    "name": "KiroDermal Jabón",
+    "slug": "kirodermal-jabon",
+    "cat": "Dermatológicos tópicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/KIRODERMAL_JAB_100g-300x300.png"
+  },
+  {
+    "name": "KiroDermal Shampoo",
+    "slug": "kirodermal-shampoo",
+    "cat": "Dermatológicos tópicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/03/KIRODERMAL_SH_350ml-300x300.png"
+  },
+  {
+    "name": "Kirodroxil 200",
+    "slug": "kirodroxil-200",
+    "cat": "Antibióticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Kirodroxil-200-300x300.png"
+  },
+  {
+    "name": "Kirodroxil 400",
+    "slug": "kirodroxil-400",
+    "cat": "Antibióticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/Kirodroxil-400-300x300.png"
+  },
+  {
+    "name": "KiroDroxil Tabletas 200 mg",
+    "slug": "kirodroxil-tabletas-200",
+    "cat": "Hospitalarios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Kirodroxil_200-300x300.png"
+  },
+  {
+    "name": "KiroDroxil Tabletas 400 mg",
+    "slug": "kirodroxil-tabletas-400-mg",
+    "cat": "Hospitalarios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Kirodroxil_400-300x300.png"
+  },
+  {
+    "name": "KirOftal Azitrokir",
+    "slug": "kiroftal-azitrokir",
+    "cat": "Oftálmicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/02/KirOftal_Azitrokir_5ml-2-300x300.png"
+  },
+  {
+    "name": "Kiroftal Ciclosporin",
+    "slug": "kiroftal-ciclosporin",
+    "cat": "Oftálmicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/06/KirOftal_CICLOSPORIN_5ml-300x300.png"
+  },
+  {
+    "name": "KirOftal CiproXyn",
+    "slug": "kiroftal-ciproxyn",
+    "cat": "Oftálmicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/02/KirOftal_CiproXyn_5ml-2-300x300.png"
+  },
+  {
+    "name": "KirOftal Dexa",
+    "slug": "kiroftal-dexa",
+    "cat": "Oftálmicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/02/KirOftal_Dexa_5ml-2-300x300.png"
+  },
+  {
+    "name": "KirOftal Diclo",
+    "slug": "kiroftal-diclo",
+    "cat": "Oftálmicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/KirOftal_Diclo_12ml-2-300x300.png"
+  },
+  {
+    "name": "KirOftal Genta",
+    "slug": "kiroftal-genta",
+    "cat": "Oftálmicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/KirOftal_Genta_12ml-2-300x300.png"
+  },
+  {
+    "name": "KirOftal KiroPred",
+    "slug": "kiroftal-kiropred",
+    "cat": "Oftálmicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/02/KirOftal_KiroPred_5ml-300x300.png"
+  },
+  {
+    "name": "KirOftal NeoDex",
+    "slug": "kiroftal-neodex",
+    "cat": "Oftálmicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/02/KirOftal_NeoDex_5ml-2-300x300.png"
+  },
+  {
+    "name": "KirOftal Tobra",
+    "slug": "kiroftal-tobra",
+    "cat": "Oftálmicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/02/KirOftal_Tobra_5ml-2-300x300.png"
+  },
+  {
+    "name": "KiroNazol",
+    "slug": "kironazol",
+    "cat": "Dermatológicos tópicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/03/KIRONAZOL_350ml-300x300.png"
+  },
+  {
+    "name": "KiroPred 20",
+    "slug": "kiropred-20",
+    "cat": "Analgésicos y Antiinflamatorios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/KiroPred-20-300x300.png"
+  },
+  {
+    "name": "KiroPred 5",
+    "slug": "kiropred-5",
+    "cat": "Analgésicos y Antiinflamatorios",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/KiroPred-5-300x300.png"
+  },
+  {
+    "name": "KiroPred 50",
+    "slug": "kiropred-50",
+    "cat": "Analgésicos y Antiinflamatorios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/KiroPred-50-300x300.png"
+  },
+  {
+    "name": "KiroSeb",
+    "slug": "kiroseb",
+    "cat": "Dermatológicos tópicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/03/KIROSEB_350ml-1-300x300.png"
+  },
+  {
+    "name": "Kiroseptic Spray",
+    "slug": "kiroseptic",
+    "cat": "Antisépticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/KIROSEPTIC_SPRAY_100ML-1-300x300.png"
+  },
+  {
+    "name": "KiroStop-D",
+    "slug": "kirostop-d",
+    "cat": "Antimicrobianos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/KiroStop-D-Susp-3-300x300.png"
+  },
+  {
+    "name": "KiroSulft-T",
+    "slug": "kirosulft-t",
+    "cat": "Antibióticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/KiroSulf-t-2-300x300.png"
+  },
+  {
+    "name": "KirOtic 4L",
+    "slug": "kirotic-4l",
+    "cat": "Óticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/Kirotic4L-2-300x300.png"
+  },
+  {
+    "name": "Kiroxilina 100",
+    "slug": "kiroxilina-100",
+    "cat": "Antibióticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Kiroxilina-100_30-300x300.png"
+  },
+  {
+    "name": "Kiroxilina 400",
+    "slug": "kiroxilina-400",
+    "cat": "Antibióticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/Kiroxilina-400_20-300x300.png"
+  },
+  {
+    "name": "KiroXilina Tabletas 100 mg",
+    "slug": "kiroxilina-tabletas",
+    "cat": "Hospitalarios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/06/KIROXILINA-100_600X600-300x300.png"
+  },
+  {
+    "name": "KiroXilina Tabletas 400 mg",
+    "slug": "kiroxilina-tabletas-400-mg",
+    "cat": "Hospitalarios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/06/KIROXILINA-400_600X600-300x300.png"
+  },
+  {
+    "name": "LagriVet",
+    "slug": "lagrivet",
+    "cat": "Oftálmicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/02/KirOftal-Lagrivet_8g-300x300.webp"
+  },
+  {
+    "name": "LagriVet SC",
+    "slug": "lagrivet-sc",
+    "cat": "Oftálmicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/02/KirOftal_LAGRIVET_SC_10ml-300x300.png"
+  },
+  {
+    "name": "Levokir",
+    "slug": "levokir",
+    "cat": "Endocrinología",
+    "img": "https://kironmexico.com/wp-content/uploads/2024/07/60-Levokir_2-300x300.png"
+  },
+  {
+    "name": "Marboflox 20 mg",
+    "slug": "marboflox-20-mg",
+    "cat": "Hospitalarios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/07/MARBOFLOX_20MG_600X600-300x300.png"
+  },
+  {
+    "name": "Marboflox 5 mg",
+    "slug": "marboflox",
+    "cat": "Hospitalarios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/07/MARBOFLOX_5MG_600X600-300x300.png"
+  },
+  {
+    "name": "Marboflox 80 mg",
+    "slug": "marboflox-80-mg",
+    "cat": "Hospitalarios",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/07/MARBOFLOX_80MG_600X600-300x300.png"
+  },
+  {
+    "name": "METRAZOL INYECTABLE",
+    "slug": "metrazol-inyectable",
+    "cat": "Antimicrobianos",
+    "img": "https://kironmexico.com/wp-content/uploads/2025/03/METRAZOL-INYECTABLE--300x300.webp"
+  },
+  {
+    "name": "Metrazol Suspensión",
+    "slug": "metrazol-suspension",
+    "cat": "Antimicrobianos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/06/MetrazoL_Susp-2-300x300.png"
+  },
+  {
+    "name": "Metrazol Tabletas 250",
+    "slug": "metrazol-tabletas",
+    "cat": "Antimicrobianos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/06/Metrazol-250-2-300x300.png"
+  },
+  {
+    "name": "Metrazol Tabletas 500",
+    "slug": "metrazol-tabletas-500",
+    "cat": "Antimicrobianos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/09/Metrazol-500-300x300.png"
+  },
+  {
+    "name": "Mistery Active Fragancia",
+    "slug": "mistery-active-fragancia",
+    "cat": "Fragancias Kirón",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/10/Dreams_MISTERY_ACTVE-1-300x300.png"
+  },
+  {
+    "name": "Mistery Home Fragancia",
+    "slug": "mistery-home-fragancia",
+    "cat": "Fragancias Kirón",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/10/Dreams_MISTERY_HOME-1-300x300.png"
+  },
+  {
+    "name": "N-Emesis",
+    "slug": "n-emesis",
+    "cat": "Estimulantes del Apetito y Gastroentéricos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/N-Emesis-2-300x300.png"
+  },
+  {
+    "name": "Performance AGE´S",
+    "slug": "performance-ages",
+    "cat": "Suplementos Nutricionales",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/AGES-3-300x300.png"
+  },
+  {
+    "name": "Performance Calcio",
+    "slug": "performace-calcio",
+    "cat": "Suplementos Nutricionales",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/CALCIO-3-300x300.png"
+  },
+  {
+    "name": "Performance Condoprotector vitaminado",
+    "slug": "performance-condoprotector-vitaminado",
+    "cat": "Suplementos Nutricionales",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/CONDROPROTECTOR-3-300x300.png"
+  },
+  {
+    "name": "Performance Reconstituyente",
+    "slug": "performance-reconstituyente",
+    "cat": "Suplementos Nutricionales",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/RECONSTITUYENTE_VITAMINAS-3-300x300.png"
+  },
+  {
+    "name": "Quiroflox Solución oral",
+    "slug": "quiroflox-solucion-oral",
+    "cat": "Antibióticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/Quiroflox_sol-300x300.png"
+  },
+  {
+    "name": "Quiroflox Tabletas orales 150",
+    "slug": "quiroflox-tabletas-orales-150",
+    "cat": "Antibióticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Quiroflox-150-300x300.png"
+  },
+  {
+    "name": "Quiroflox Tabletas orales 50",
+    "slug": "quiroflox-tabletas-orales-50",
+    "cat": "Antibióticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/02/Quiroflox-50-300x300.png"
+  },
+  {
+    "name": "Secrets Active Fragancia",
+    "slug": "secrets-active-fragancia",
+    "cat": "Fragancias Kirón",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/10/Dreams_SECRETS_ACTIVE-1-300x300.png"
+  },
+  {
+    "name": "Secrets Home Fragancia",
+    "slug": "secrets-home-fragancia",
+    "cat": "Fragancias Kirón",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/10/Dreams_SECRETS_HOME-1-300x300.png"
+  },
+  {
+    "name": "Shampoo insecticida",
+    "slug": "shampoo-insecticida",
+    "cat": "Ectoparasiticidas",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/SH_PD_INSECTICIDA-3-300x300.png"
+  },
+  {
+    "name": "SPIROCARD DUO 5",
+    "slug": "spirocard-duo-5",
+    "cat": "Cardiológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2026/08/SPIROCARD-DUO-5-300x300.webp",
+    "isNew": true
+  },
+  {
+    "name": "SUCRAL Gel Oral",
+    "slug": "sucral-gel-oral",
+    "cat": "Estimulantes del Apetito y Gastroentéricos",
+    "img": "https://kironmexico.com/wp-content/uploads/2025/07/Sucral-Gel-15-300x300.webp"
+  },
+  {
+    "name": "SUCRAL Suspensión Oral",
+    "slug": "sucral-suspension-oral",
+    "cat": "Estimulantes del Apetito y Gastroentéricos",
+    "img": "https://kironmexico.com/wp-content/uploads/2025/07/Sucral-Susp-60-300x300.webp"
+  },
+  {
+    "name": "Terbinafin",
+    "slug": "terbinafin",
+    "cat": "Dermatológicos orales",
+    "img": "https://kironmexico.com/wp-content/uploads/2023/06/TERBINAFIN_20TABS-1-1-300x300.png"
+  },
+  {
+    "name": "Toallitas Limpiadoras de dientes y encias",
+    "slug": "toallitas-limpiadoras-de-dientes-y-encias",
+    "cat": "Higiene bucal",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/Toallitas_dientes-y-encias-300x300.png"
+  },
+  {
+    "name": "Toallitas Limpiadoras de lágrimas",
+    "slug": "toallitas-limpiadoras-de-lagrimas",
+    "cat": "Oftálmicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/Toallitas_lagrimas-300x300.png"
+  },
+  {
+    "name": "Toallitas Limpiadoras de orejas",
+    "slug": "toallitas-limpiadoras-de-orejas",
+    "cat": "Óticos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/Toallitas_orejas-300x300.png"
+  },
+  {
+    "name": "Toltrafin Suspensión oral",
+    "slug": "toltrafin-suspension-oral",
+    "cat": "Antimicrobianos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/02/Toltrafin-Susp-2-300x300.png"
+  },
+  {
+    "name": "Toltrafin Tabletas orales 200",
+    "slug": "toltrafin-tabletas-orales-200",
+    "cat": "Antimicrobianos",
+    "img": "https://kironmexico.com/wp-content/uploads/2020/09/Toltrafin-200-2-300x300.png"
+  },
+  {
+    "name": "Toltrafin Tabletas orales 400",
+    "slug": "toltrafin-tabletas-orales-400",
+    "cat": "Antimicrobianos",
+    "img": "https://kironmexico.com/wp-content/uploads/2021/08/Toltrafin-400-1-300x300.png"
+  },
+  {
+    "name": "Vibix C Puppy Advanced",
+    "slug": "vibix-c-puppy-advanced",
+    "cat": "Biológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2024/08/600x600_Vibix_Advanced-1-300x300.png"
+  },
+  {
+    "name": "Vibix c4",
+    "slug": "vibix-c4",
+    "cat": "Biológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2024/08/600x600_Vibix_C4-1-300x300.png"
+  },
+  {
+    "name": "Vibix c5",
+    "slug": "vibix-c5",
+    "cat": "Biológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2024/09/600x600_Vibix_C5-1-300x300.png"
+  },
+  {
+    "name": "Vibix C6R",
+    "slug": "vibix-c6r",
+    "cat": "Biológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2024/08/600x600_Vibix_C6R-1-300x300.png"
+  },
+  {
+    "name": "Vibix F3",
+    "slug": "vibix-f3",
+    "cat": "Biológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2024/08/600x600_Vibix_F3-1-300x300.png"
+  },
+  {
+    "name": "VIBIX F3 + R",
+    "slug": "vibix-f3-r",
+    "cat": "Biológicos",
+    "img": "https://kironmexico.com/wp-content/uploads/2024/09/600x600_Vibix_F3R-1-300x300.png"
+  }
+]

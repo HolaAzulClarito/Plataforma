@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "u": "Dra. Laura Méndez",
+    "s": "inmunologia",
+    "st": "approved",
+    "f": "12/05/2026",
+    "por": "Equipo Kirón"
+  },
+  {
+    "id": 2,
+    "u": "Dra. Laura Méndez",
+    "s": "oftalmologia",
+    "st": "approved",
+    "f": "03/08/2026",
+    "por": "Equipo Kirón"
+  },
+  {
+    "id": 3,
+    "u": "Dra. Laura Méndez",
+    "s": "dermatoendocrino",
+    "st": "approved",
+    "f": "02/10/2026",
+    "por": "Equipo Kirón"
+  },
+  {
+    "id": 4,
+    "u": "MVZ Paola Ruiz",
+    "s": "oftalmologia",
+    "st": "approved",
+    "f": "04/06/2026",
+    "por": "Importación de grupo"
+  },
+  {
+    "id": 5,
+    "u": "Dr. Andrés Salinas",
+    "s": "dermatoendocrino",
+    "st": "approved",
+    "f": "18/08/2026",
+    "por": "Equipo Kirón"
+  },
+  {
+    "id": 6,
+    "u": "MVZ Diego Herrera",
+    "s": "inmunologia",
+    "st": "approved",
+    "f": "12/05/2026",
+    "por": "Equipo Kirón"
+  },
+  {
+    "id": 7,
+    "u": "MVZ Sofía Cárdenas",
+    "s": "diplomado-inmunologia",
+    "st": "approved",
+    "f": "09/09/2026",
+    "por": "Importación de grupo"
+  },
+  {
+    "id": 8,
+    "u": "MVZ Jorge Palacios",
+    "s": "oftalmologia",
+    "st": "approved",
+    "f": "14/07/2026",
+    "por": "Equipo Kirón"
+  },
+  {
+    "id": 9,
+    "u": "MVZ Ana Lucía Torres",
+    "s": "kiroftal-2",
+    "st": "approved",
+    "f": "02/03/2026",
+    "por": "Equipo Kirón"
+  },
+  {
+    "id": 10,
+    "u": "MVZ Ricardo Ibarra",
+    "s": "diplomado-inmunologia",
+    "st": "approved",
+    "f": "21/09/2026",
+    "por": "Importación de grupo"
+  },
+  {
+    "id": 11,
+    "u": "MVZ Fernanda Ortiz",
+    "s": "oftalmologia",
+    "st": "approved",
+    "f": "06/10/2026",
+    "por": "Equipo Kirón"
+  },
+  {
+    "id": 12,
+    "u": "MVZ Karla Medina",
+    "s": "diplomado-integral",
+    "st": "pending",
+    "f": "22/11/2026",
+    "por": "Solicitud del médico"
+  },
+  {
+    "id": 13,
+    "u": "MVZ Óscar Lozano",
+    "s": "dermatoendocrino",
+    "st": "pending",
+    "f": "23/11/2026",
+    "por": "Solicitud del médico"
+  },
+  {
+    "id": 14,
+    "u": "MVZ Daniela Ríos",
+    "s": "odontologia",
+    "st": "approved",
+    "f": "18/11/2026",
+    "por": "Inscripción en línea"
+  },
+  {
+    "id": 15,
+    "u": "MVZ Tomás Villa",
+    "s": "kiroftal-2",
+    "st": "cancelled",
+    "f": "05/09/2026",
+    "por": "Equipo Kirón"
+  }
+]

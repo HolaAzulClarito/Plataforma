@@ -1,0 +1,125 @@
+/* Kirón design system v0.1: sobrescribe botones, encabezado, hero, tarjetas y representantes.
+   Portado de legacy/assets/app.css (líneas 845-967). Conserva los nombres de clase del demo. */
+/* ================= Kirón · design system v0.1 ================= */
+body{font-size:16px;line-height:1.6}
+h1,h2,h3,h4{font-weight:700;letter-spacing:-.01em}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.h-xl{font-size:clamp(38px,4.6vw,56px);line-height:1.06;letter-spacing:-.02em;font-weight:800}
+.h-lg{font-size:clamp(28px,3.3vw,40px);line-height:1.12;letter-spacing:-.015em;font-weight:800}
+.h-md{line-height:1.2}
+.lead{line-height:1.55}
+.eyebrow{font:700 13px/1.25 var(--f-display);letter-spacing:.12em}
+.eyebrow:before{flex:none}
+
+/* Botones: píldora, Montserrat 700. Verde con texto en tinta; nunca blanco sobre verde */
+.btn{border-radius:var(--r-pill);font:700 15px/1.25 var(--f-display);padding:13px 24px}
+.btn-sm{padding:9px 16px;font-size:13.5px}
+.btn-primary{background:var(--ink);color:#fff;box-shadow:none}
+.btn-primary:hover{background:#2a2c27;box-shadow:var(--shadow-pop)}
+.btn-accent{background:var(--green-500);color:var(--ink);box-shadow:none}
+.btn-accent:hover{background:var(--green-400);box-shadow:var(--shadow-pop)}
+.btn-ghost{border:2px solid var(--ink);color:var(--ink)}
+.btn-ghost.btn-sm{border-width:1.5px}
+.btn-light{color:var(--ink)}
+.btn-outline-light{border:2px solid rgba(255,255,255,.55)}
+.mini{border-radius:var(--r-pill)}
+.demo-bar .tag,.badge-new,.side a .ct{color:var(--ink)}
+.demo-bar .demo-adm:hover{color:var(--ink)}
+.badge-soft{background:var(--green-50);color:var(--green-800)}
+.cat-pill{font-family:var(--f-display);font-weight:600;font-size:13.5px;border-color:var(--border-strong);color:var(--ink)}
+.cat-pill:hover{border-color:var(--green-700);background:var(--green-50)}
+.cat-pill.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip{border-color:var(--border-strong)}
+.lang b.cur{color:var(--ink)}
+.big-ok.lockd .ico{color:var(--green-700)}
+.wa-pdf i{background:var(--danger)}
+.pm-badge{background:var(--danger)}
+input,select,textarea{font-family:var(--f-body)}
+
+/* Encabezado y pie: el logo solo sobre blanco */
+.brand img,.hdr .brand img{height:50px;min-width:86px}
+.nav a{font-family:var(--f-display);font-weight:600;font-size:14px}
+.ftr .pill{border-radius:var(--r-lg);padding:14px 20px}
+.ftr .pill img{height:72px}
+.ftr h5{font-weight:700;letter-spacing:.08em}
+
+/* Hero: blanco, con el patrón cuadrado suave, píldora y regla */
+.hero{background:#fff;color:var(--ink);min-height:0;display:block}
+.hero .wrap{padding-top:72px;padding-bottom:80px;display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:56px;align-items:center}
+.hero .eyebrow.light{color:var(--green-700)}
+.hero h1{color:var(--ink);max-width:640px}
+.hero h1 em{color:var(--ink);background:var(--green-500);border-radius:var(--r-pill);padding:0 .28em .06em;margin-left:-.1em;-webkit-box-decoration-break:clone;box-decoration-break:clone;white-space:nowrap}
+.hero .lead{color:var(--muted);max-width:520px}
+.hero-search{background:#fff;border:1.5px solid var(--border-strong);backdrop-filter:none;margin-top:36px;max-width:560px}
+.hero-search:focus-within{background:#fff;border-color:var(--green-700)}
+.hero-search>.ico{color:var(--muted)}
+.hero-search input{color:var(--ink);font-size:16px}
+.hero-search input::placeholder{color:#6b7065}
+.hero-chips a{background:#fff;border:1px solid var(--border-strong);color:#3d4039;font:600 13px var(--f-display)}
+.hero-chips a:hover{background:var(--green-50);border-color:var(--green-700);color:var(--ink)}
+.hero-stats{position:relative;background:var(--surface-alt);border-top:1px solid var(--border)}
+.hero-stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding-top:22px;padding-bottom:24px}
+.stat b{color:var(--ink)}
+.stat span{color:var(--muted)}
+.hero-art{position:relative;aspect-ratio:1/1;width:100%;max-width:500px;justify-self:end}
+.hb{position:absolute;display:block;border-radius:var(--r-lg)}
+.hb1{background:var(--green-500);top:0;right:-140px;width:88%;height:74%}
+.hb2{background:var(--green-900);left:0;bottom:0;width:44%;height:38%}
+.hb3{background:var(--green-200);border-radius:50%;width:24%;aspect-ratio:1/1;left:6%;top:4%}
+.hero-plate{position:absolute;left:14%;top:13%;width:68%;aspect-ratio:1/1;background:#fff;border-radius:var(--r-lg);box-shadow:var(--shadow-pop);display:flex;align-items:center;justify-content:center;padding:7%}
+.hero-plate img{width:100%;height:100%;object-fit:contain}
+.hero-tag{position:absolute;right:4%;bottom:7%;background:var(--ink);color:#fff;border-radius:var(--r-pill);padding:10px 20px;font:600 13.5px/1.2 var(--f-display);white-space:nowrap}
+.hero-tag b{font-weight:800;color:var(--green-400);text-transform:uppercase;letter-spacing:.08em;margin-right:6px;font-size:12px}
+@media (max-width:980px){
+  .hero .wrap{grid-template-columns:1fr;gap:36px;padding-top:44px;padding-bottom:48px}
+  .hero-art{max-width:340px;justify-self:center}
+  .hb1{right:-60px}
+  .hero-stats .wrap{grid-template-columns:repeat(2,1fr);row-gap:14px}
+  .hero h1 em{white-space:normal}
+}
+
+/* Tarjetas */
+.pcard{border-top:3px solid var(--green-500)}
+.pcat{font-family:var(--f-display);color:var(--green-700)}
+.ccover .cimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ccover:has(.cimg) .cico{display:none}
+.ccover .ccat{background:rgba(29,29,27,.78);backdrop-filter:none;color:#fff}
+.ccover .ccat.enrolled{background:var(--green-500);color:var(--ink)}
+.price .free{color:var(--green-700)}
+.next-webinar .nw-side{background:rgba(29,29,27,.28)}
+.pp-date{background:#fff}
+.pp-date .d{color:var(--green-700)}
+.pp-date .ym{border-bottom:2px solid var(--green-500)}
+.speaker-line b span{color:var(--green-400)}
+.tile.navy .ti{background:rgba(255,255,255,.12)}
+.cta-band .ring{display:none}
+
+/* Paneles de medios de ejemplo */
+.kstage{position:relative;width:100%;height:100%;min-height:220px;background:var(--green-900);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.kstage:before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:var(--r-lg);background:var(--green-500)}
+.kstage:after{content:"";position:absolute;left:8%;bottom:10%;width:84px;height:84px;border-radius:50%;background:var(--green-200)}
+.kplate{position:relative;z-index:1;background:#fff;border-radius:var(--r-lg);padding:18px 28px;box-shadow:var(--shadow-pop)}
+.kplate img{height:88px;width:auto}
+.kstage-wrap{aspect-ratio:16/9;border-radius:var(--r-md);overflow:hidden}
+.lr-stage .kstage{min-height:0}
+
+/* Representantes */
+.rep-zones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.repz .eyebrow{margin-bottom:10px}
+.repz h3{font-size:24px}
+.rep-list{display:grid;gap:0;margin-top:14px}
+.rep-list.three{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 24px}
+.rep{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--border)}
+.rep .avatar{width:40px;height:40px;margin:0;font-size:13px;background:var(--green-50);color:var(--green-800)}
+.rep-b{min-width:0;display:flex;flex-direction:column;gap:2px}
+.rep-b b{color:var(--ink);font:700 15.5px/1.3 var(--f-display)}
+.rep-b small{color:var(--muted);font-size:13px}
+.rep-c{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:4px;font-size:14px}
+.rep-c a{display:inline-flex;align-items:center;gap:6px;color:var(--green-700);overflow-wrap:anywhere}
+.rep-c .ico{width:14px;height:14px}
+@media (max-width:900px){.rep-zones,.rep-list.three{grid-template-columns:1fr}}
+.panel h3,.ccard h3,.vt-link h3,.list-row b,td{overflow-wrap:anywhere}
+.ccard h3{font-size:17px;line-height:1.3}
+@media (max-width:640px){.grid-p.three:has(.ccard),.grid-p.three:has(.vt-link){grid-template-columns:1fr}}
+.qa,.qa b{overflow-wrap:anywhere;min-width:0}
+

@@ -1,0 +1,52 @@
+[
+  {
+    "folio": "KI-2026-001234",
+    "u": "Dra. Laura Méndez",
+    "tipo": "diplomado",
+    "ref": "inmunologia",
+    "titulo": "Módulo 1 · Donde todo comienza: las bases de la defensa en perros y gatos",
+    "fecha": "12/09/2026",
+    "origen": "migrada",
+    "plantilla": "c1"
+  },
+  {
+    "folio": "KI-2026-001388",
+    "u": "Dra. Laura Méndez",
+    "tipo": "webinar",
+    "ref": "gabapentina-neurologia-canina",
+    "titulo": "Gabapentina en neurología canina",
+    "fecha": "15/10/2026",
+    "origen": "webinar",
+    "plantilla": null
+  },
+  {
+    "folio": "KI-2026-001290",
+    "u": "MVZ Paola Ruiz",
+    "tipo": "diplomado",
+    "ref": "oftalmologia",
+    "titulo": "Bloque 1 · Oftalmología y otitis",
+    "fecha": "10/11/2026",
+    "origen": "academia",
+    "plantilla": "c1"
+  },
+  {
+    "folio": "KI-2026-001291",
+    "u": "MVZ Diego Herrera",
+    "tipo": "diplomado",
+    "ref": "inmunologia",
+    "titulo": "Módulo 1 · Donde todo comienza: las bases de la defensa en perros y gatos",
+    "fecha": "05/11/2026",
+    "origen": "academia",
+    "plantilla": "c1"
+  },
+  {
+    "folio": "KI-2026-001292",
+    "u": "MVZ Ana Lucía Torres",
+    "tipo": "curso",
+    "ref": "kiroftal-2",
+    "titulo": "KirOftal 2.0 · Lo esencial en oftalmología veterinaria",
+    "fecha": "08/11/2026",
+    "origen": "academia",
+    "plantilla": "c2"
+  }
+]

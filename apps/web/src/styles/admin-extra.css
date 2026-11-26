@@ -1,0 +1,31 @@
+/* Administrador (versión React). Estilos que en el demo iban en línea o que necesita lo nuevo. Se importa al final. */
+
+/* Filas de módulo del formulario "Nuevo curso" (en el demo, estilo en línea de courseModAdd). */
+.cmod{display:grid;grid-template-columns:1fr 110px auto;gap:10px;align-items:end;margin-bottom:12px}
+.cmod .l{display:block;font:600 13px var(--f-body);color:var(--muted);margin-bottom:6px}
+@media (max-width:560px){.cmod{grid-template-columns:1fr 84px auto}}
+
+/* Precio informativo en la tabla de cursos: monto, precio anterior y leyenda de IVA apilados. */
+.adm-price{display:flex;flex-direction:column;gap:1px}
+.adm-price b{font-weight:600;color:var(--ink)}
+.adm-price s,.adm-price .iva-note{font-size:12px;color:var(--muted)}
+
+/* Vista previa aislada de la descripción HTML del curso (iframe sandbox). */
+.ce-desc-frame{display:block;width:100%;min-height:260px;border:0;background:#fff;border-radius:8px;resize:vertical;overflow:auto}
+
+/* Plantilla de constancia: foco visible del dato seleccionado con teclado. */
+.cert-sheet.edit .cert-var:focus-visible{outline:2px solid var(--focus);outline-offset:4px}
+
+/* Campos de archivo visualmente ocultos dentro de su etiqueta: siguen siendo enfocables con teclado. */
+.ce-drop:focus-within,.drop:focus-within,.ce-repl:focus-within,.ce-lmove label.icon-btn:focus-within{outline:2px solid var(--focus);outline-offset:2px}
+.ce-lmove label.icon-btn{cursor:pointer}
+
+/* Encabezado h2 dentro de .main-head (banco de preguntas, editor de plantilla). */
+.main-head h2{margin:0}
+
+/* Vista del alumno: el fieldset de la primera pregunta sin el borde del navegador. */
+.cs-q{border:0;padding:0;min-width:0}
+.cs-q legend{padding:0;margin-bottom:6px}
+
+/* Botones deshabilitados mientras se guarda. */
+.mini:disabled,.chip-t:disabled,.switch:disabled,.ce-madd button:disabled,.ce-pgrid button:disabled{opacity:.55;cursor:not-allowed}

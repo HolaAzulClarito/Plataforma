@@ -1,0 +1,61 @@
+[
+  {
+    "t": "om",
+    "q": "En el demo, ¿qué se necesita para emitir la constancia?",
+    "o": [
+      "Terminar todas las lecciones y aprobar el examen final",
+      "Ver un solo video",
+      "Pagar otra vez"
+    ],
+    "c": [
+      0
+    ]
+  },
+  {
+    "t": "vf",
+    "q": "Una constancia se verifica con su folio o su código QR.",
+    "o": [
+      "Verdadero",
+      "Falso"
+    ],
+    "c": [
+      0
+    ]
+  },
+  {
+    "t": "om",
+    "q": "¿Qué pasa con tu avance si cambias de dispositivo?",
+    "o": [
+      "Se conserva",
+      "Se pierde",
+      "Se reinicia la lección"
+    ],
+    "c": [
+      0
+    ]
+  },
+  {
+    "t": "rm",
+    "q": "Selecciona lo que cuenta para terminar un curso.",
+    "o": [
+      "Ver todas las lecciones al 100 %",
+      "Aprobar el examen final",
+      "Dejar una reseña"
+    ],
+    "c": [
+      0,
+      1
+    ]
+  },
+  {
+    "t": "vf",
+    "q": "Puedes marcar una lección como vista sin reproducir el video.",
+    "o": [
+      "Verdadero",
+      "Falso"
+    ],
+    "c": [
+      1
+    ]
+  }
+]

@@ -1,0 +1,183 @@
+/* Textos nuevos del administrador en la versión React (no existían en el demo v2.4.1 o cambiaron al conectar la API).
+   Se registra en engine.ts después de extra.ts. Agrega aquí cada texto fijo nuevo del admin con su traducción. */
+export const I18N_EXTRA_ADMIN: Readonly<Record<string, string>> = {
+  // Dictamen de QA 26/11/2026: borrar módulo, índices posicionales, webinar "proximo", ajustes no aplicados
+  "Borrar módulo": "Delete module",
+  "Se borrará el módulo": "This will delete the module",
+  "y su lección.": "and its lesson.",
+  "y sus": "and its",
+  "lecciones.": "lessons.",
+  "No se puede deshacer.": "This can't be undone.",
+  "Módulo borrado": "Module deleted",
+  "No se puede borrar: el curso se quedaría sin lecciones": "It can't be deleted: the course would have no lessons",
+  "El curso necesita al menos un módulo": "The course needs at least one module",
+  "El curso ya tiene alumnos con avance: no se pueden borrar ni mover lecciones existentes (cambiaría su avance). Agrega lecciones al final del temario.":
+    "Students already have progress in this course: existing lessons can't be deleted or moved (it would change their progress). Add lessons at the end of the curriculum.",
+  "El examen ya tiene intentos o sesiones abiertas: no se pueden borrar ni reordenar sus preguntas (cambiaría lo que respondieron). Agrega preguntas nuevas al final.":
+    "The exam already has attempts or open sessions: its questions can't be deleted or reordered (it would change what students answered). Add new questions at the end.",
+  'La dirección "proximo" está reservada para el próximo webinar; usa otra.': 'The address "proximo" is reserved for the upcoming webinar; use another one.',
+  "Próximamente: el servidor todavía no aplica este ajuste.": "Coming soon: the server doesn't apply this setting yet.",
+  "Porcentaje configurable: Próximamente. Hoy siempre es 100 %.": "Configurable percentage: coming soon. It is always 100% for now.",
+  // Barra lateral, tablero y médicos
+  "pendientes": "pending",
+  "vs. mes anterior": "vs. last month",
+  "asistentes": "attendees",
+  "Ene": "Jan", "Feb": "Feb", "Mar": "Mar", "Abr": "Apr", "May": "May", "Jun": "Jun",
+  "Jul": "Jul", "Ago": "Aug", "Sep": "Sep", "Oct": "Oct", "Nov": "Nov", "Dic": "Dec",
+  "pendientes · se valida en la consulta pública de la SEP": "pending · checked against the SEP public registry",
+  "Cédula": "License",
+  "verificado. Se le avisó por correo y sumó sus puntos del Club MVZ.": "verified. They were notified by email and received their Club MVZ points.",
+  "Acciones": "Actions",
+  "URL": "URL",
+
+  // Club MVZ
+  "Una vez": "Once",
+  "Por lección": "Per lesson",
+  "Por curso": "Per course",
+  "Por webinar": "Per webinar",
+  "Puntos por": "Points for",
+  "Regla guardada": "Rule saved",
+  "Premio quitado": "Reward removed",
+  "Sin premios vigentes.": "No active rewards.",
+
+  // Webinars
+  "Hrs (México)": "hrs (Mexico)",
+  "Hrs": "hrs",
+  "Dr.": "Dr.",
+  "Dra.": "Dr.",
+  "M. en C.": "M.Sc.",
+  "Esp.": "Spec.",
+  "60 minutos": "60 minutes",
+  "90 minutos": "90 minutes",
+  "120 minutos": "120 minutes",
+  "Todavía no hay asistentes registrados.": "No attendees recorded yet.",
+  "Lista descargada": "List downloaded",
+  "Sin webinars.": "No webinars.",
+  "Flyer del webinar": "Webinar flyer",
+  "No se pudo crear el webinar.": "The webinar couldn't be created.",
+
+  // Páginas
+  "Nombre de la página": "Page name",
+  "Bloque nuevo": "New block",
+  "Sin páginas.": "No pages.",
+  "Editar · Nueva página": "Edit · New page",
+
+  // Selección y lotes
+  "Seleccionar los": "Select the",
+  "resultados": "results",
+  "Seleccionar": "Select",
+  "Seleccionar a": "Select",
+  "seleccionados": "selected",
+  "seleccionadas": "selected",
+  "Informativo": "For reference",
+  "Secciones de la academia": "Academy sections",
+
+  // Alumnos y grupos
+  "CSV con las columnas de la plantilla": "CSV with the template columns",
+  "vista previa": "preview",
+  "No encontramos alumnos válidos en el archivo.": "We couldn't find valid students in the file.",
+  "Filas sin nombre o correo válido (se omiten)": "Rows without a valid name or email (skipped)",
+  "Agregar al grupo": "Add to group",
+  "Sin grupo": "No group",
+  "Importar alumnos": "Import students",
+  "Por ahora importa la lista en CSV: en Excel, Guardar como, CSV UTF-8.": "For now, import the list as CSV: in Excel, Save as, CSV UTF-8.",
+  "vence": "due",
+  "alumnos agregados. Recibieron su acceso por correo.": "students added. They received their access by email.",
+
+  // Calificaciones, intentos y exámenes
+  "historial": "history",
+  "Respondió": "Answered",
+  "Correcta": "Correct",
+  "Sin respuesta": "No answer",
+  "Este intento se migró de la plataforma anterior y no tiene respuestas guardadas; solo se conserva su calificación.":
+    "This attempt was migrated from the previous platform and has no saved answers; only its grade is kept.",
+  "exámenes": "exams",
+  "Intento adicional autorizado. Se avisó al alumno por correo.": "Extra attempt approved. The student was notified by email.",
+  "Solicitud rechazada. Se avisó al alumno por correo.": "Request declined. The student was notified by email.",
+  "Respuesta correcta": "Correct answer",
+  "intento": "attempt",
+  "en curso": "in progress",
+  "aprobado": "passed",
+  "no aprobado": "not passed",
+  "Inscripción aprobada": "Enrollment approved",
+  "Inscripción pendiente": "Enrollment pending",
+  "Inscripción cancelada": "Enrollment cancelled",
+  "Constancia emitida": "Certificate issued",
+
+  // Constancias
+  "Mover": "Move",
+  "Imagen quitada": "Image removed",
+  "Vista previa con datos de ejemplo.": "Preview with sample data.",
+
+  // Reportes
+  "intentos": "attempts",
+  "Descargar CSV": "Download CSV",
+  "CSV (abre en Excel)": "CSV (opens in Excel)",
+  "Alumnos sin entrar en los últimos 30 días": "Students who haven't logged in in the last 30 days",
+  "inscripciones registradas": "enrollments recorded",
+  "Sin inscripciones aprobadas todavía.": "No approved enrollments yet.",
+  "No se pudo descargar el archivo. Intenta de nuevo.": "The file couldn't be downloaded. Try again.",
+
+  // Automatizaciones
+  "Activar": "Turn on",
+  "Asunto": "Subject",
+  "Academia Kirón": "Kirón Academy",
+
+  // Editor de cursos
+  "pendientes antes de publicar": "items to fix before publishing",
+  "Ver pendientes": "See items to fix",
+  "Módulo": "Module",
+  "preg.": "q.",
+  "Hay": "There are",
+  "pendientes. Mientras tanto el curso sigue como borrador y se guarda solo.": "items to fix. Meanwhile the course stays as a draft and saves automatically.",
+  "más.": "more.",
+  "Por ahora se registra el nombre y el peso del archivo; la carga al almacenamiento privado llega con la etapa de archivos.":
+    "For now the file name and size are recorded; uploading to private storage comes with the files stage.",
+  "Precio regular en MXN (informativo)": "Regular price in MXN (for reference)",
+  "Precio de oferta en MXN (0 = gratuito)": "Sale price in MXN (0 = free)",
+  "Máximo": "Maximum",
+  "caracteres.": "characters.",
+  "Correcta: opción": "Correct: option",
+  "No se pudo publicar el curso.": "The course couldn't be published.",
+  "No se pudo exportar el examen.": "The exam couldn't be exported.",
+  "No se pudo crear el curso.": "The course couldn't be created.",
+  "No se pudo guardar. Intenta de nuevo.": "It couldn't be saved. Try again.",
+  "Curso programado": "Course scheduled",
+  "Pregunta eliminada": "Question deleted",
+  "Archivo quitado": "File removed",
+  "archivos agregados": "files added",
+  "Cierre": "Wrap-up",
+};
+
+/* Reglas con expresión regular para textos del admin que llevan datos (se prueban antes que las del demo). */
+export const I18N_EXTRA_ADMIN_RX: ReadonlyArray<readonly [string, string]> = [
+  ["^(\\d+) inscripciones aprobadas$", "$1 enrollments approved"],
+  ["^(\\d+) inscripciones canceladas$", "$1 enrollments cancelled"],
+  ["^(\\d+) cursos actualizados$", "$1 courses updated"],
+  ["^(\\d+) sin publicar porque tienen pendientes$", "$1 not published because they have items to fix"],
+  ["^(\\d+) alumnos agregados$", "$1 students added"],
+  ["^(\\d+) correos repetidos omitidos$", "$1 duplicate emails skipped"],
+  ["^(\\d+) puntos$", "$1 points"],
+  ["^(\\d+) no son de un tipo permitido o pesan más de 50 MB$", "$1 aren't an allowed type or are larger than 50 MB"],
+  ["^(\\d+) archivos agregados$", "$1 files added"],
+  ["^(\\d+) · sin límite$", "$1 · unlimited"],
+  ["^intento (\\d+)$", "attempt $1"],
+  ["^Módulo (\\d+)$", "Module $1"],
+  ["^Intento (\\d+)$", "Attempt $1"],
+  ["^Lección (\\d+)$", "Lesson $1"],
+  ["^Pregunta (\\d+)$", "Question $1"],
+  ["^Inscripción (aprobada|pendiente|cancelada)$", "Enrollment $1"],
+  ["^Constancia emitida$", "Certificate issued"],
+  ["^folio (KI-\\d{4}-\\d{6})$", "number $1"],
+  ["^Último acceso: (.+)$", "Last access: $1"],
+  /* Pendientes del editor (editorIssues): "<lección>: falta …" y "<examen>: la pregunta N …". */
+  ["^(.+): falta el video de Bunny$", "$1: Bunny video missing"],
+  ["^(.+): falta la duración del video$", "$1: video duration missing"],
+  ["^(.+): sin preguntas$", "$1: no questions"],
+  ["^(.+): la pregunta (\\d+) no tiene texto$", "$1: question $2 has no text"],
+  ["^(.+): la pregunta (\\d+) necesita al menos dos opciones y una correcta$", "$1: question $2 needs at least two options and one correct answer"],
+  ["^(.+): la pregunta (\\d+) necesita marcar verdadero o falso$", "$1: question $2 needs true or false marked"],
+  ["^(.+): la pregunta (\\d+) tiene parejas incompletas$", "$1: question $2 has incomplete pairs"],
+  ["^El curso no tiene lecciones$", "The course has no lessons"],
+  ["^El examen final no tiene preguntas que se califiquen solas$", "The final exam has no auto-graded questions"],
+];

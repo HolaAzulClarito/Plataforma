@@ -1,0 +1,23 @@
+/* Academia, panel del médico y webinars (versión React). Va al final de la cascada. */
+
+/* Modo enfoque del curso: sin aviso de demo, encabezado ni pie; queda la barra .focus-bar del curso. */
+body.ac-focus .demo-bar,
+body.ac-focus .hdr,
+body.ac-focus .mnav,
+body.ac-focus .ftr{display:none}
+body.ac-focus #view .lesson{margin-top:22px}
+
+/* El reproductor simulado avanza con transición suave; sin animación con movimiento reducido. */
+.player .bar i{transition:width .1s linear}
+@media (prefers-reduced-motion: reduce){
+  .player .bar i{transition:none}
+}
+
+/* Botones de la lista del temario: lectura del estado para lectores de pantalla sin cambiar el diseño. */
+.lrow[aria-current="step"]{font-weight:600}
+
+/* Resultado del examen: foco programático visible pero discreto. */
+.res-big:focus{outline:2px solid var(--focus);outline-offset:4px}
+
+/* Precio dentro del formulario de inscripción. */
+.modal-b .price .iva-note{display:inline;margin-left:6px}

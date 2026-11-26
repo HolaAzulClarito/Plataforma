@@ -1,0 +1,23 @@
+/* Fuentes (@font-face apuntando a /fonts) y variables de diseño en :root.
+   Portado de legacy/assets/app.css (líneas 1-21). Conserva los nombres de clase del demo. */
+@font-face{font-family:Montserrat;src:url(/fonts/montserrat-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Montserrat;src:url(/fonts/montserrat-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:Montserrat;src:url(/fonts/montserrat-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:Montserrat;src:url(/fonts/montserrat-latin-800-normal.woff2) format("woff2");font-weight:800;font-display:swap}
+@font-face{font-family:"Source Sans 3";src:url(/fonts/source-sans-3-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Source Sans 3";src:url(/fonts/source-sans-3-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Source Sans 3";src:url(/fonts/source-sans-3-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+
+:root{
+  --green-50:#f4fbe6;--green-100:#e6f6c4;--green-200:#cdee8c;--green-300:#b3e34f;--green-400:#a1dc28;--green-500:#93d50a;--green-600:#7ab306;--green-700:#4d7404;--green-800:#3a5806;--green-900:#2c420a;
+  --pp-navy:#2c420a;--pp-red:#93d50a;--pp-silver:#878c80;--pp-ink:#1d1d1b;
+  --web-navy:#1d1d1b;--web-blue:#4d7404;--web-ice:#f7f8f5;--web-gray:#6b7065;
+  --abyss:#1d1d1b;--ocean:#2c420a;--cyan:#a1dc28;--mist:#f4fbe6;
+  --surface:#fff;--surface-alt:#f7f8f5;--ink:#1d1d1b;--heading:#1d1d1b;--muted:#575b52;
+  --border:#dfe2da;--border-strong:#878c80;--focus:#005d82;
+  --success:#4d7404;--warning:#9a6700;--danger:#b42318;
+  --shadow-card:0 1px 2px rgba(44,66,10,.08),0 4px 14px rgba(44,66,10,.07);--shadow-pop:0 8px 24px rgba(44,66,10,.12);
+  --r-xs:6px;--r-sm:6px;--r-md:12px;--r-lg:24px;--r-pill:999px;
+  --f-display:Montserrat,"Century Gothic",Arial,sans-serif;--f-body:"Source Sans 3","Segoe UI",Arial,sans-serif;--f-camp:Montserrat,"Century Gothic",Arial,sans-serif;
+  --wrap:1240px;--ease:cubic-bezier(.22,.8,.24,1);
+}

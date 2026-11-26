@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "u": "Dra. Laura Méndez",
+    "s": "inmunologia",
+    "n": 1,
+    "f": "12/09/2026",
+    "nota": 9.3,
+    "ok": true,
+    "t": 1540
+  },
+  {
+    "id": 2,
+    "u": "MVZ Paola Ruiz",
+    "s": "oftalmologia",
+    "n": 1,
+    "f": "10/11/2026",
+    "nota": 9.5,
+    "ok": true,
+    "t": 1610
+  },
+  {
+    "id": 3,
+    "u": "Dr. Andrés Salinas",
+    "s": "dermatoendocrino",
+    "n": 1,
+    "f": "09/11/2026",
+    "nota": 7,
+    "ok": false,
+    "t": 1795
+  },
+  {
+    "id": 4,
+    "u": "MVZ Diego Herrera",
+    "s": "inmunologia",
+    "n": 2,
+    "f": "05/11/2026",
+    "nota": 8.7,
+    "ok": true,
+    "t": 1488
+  },
+  {
+    "id": 5,
+    "u": "MVZ Diego Herrera",
+    "s": "inmunologia",
+    "n": 1,
+    "f": "20/10/2026",
+    "nota": 7.5,
+    "ok": false,
+    "t": 1702
+  },
+  {
+    "id": 6,
+    "u": "MVZ Ana Lucía Torres",
+    "s": "kiroftal-2",
+    "n": 1,
+    "f": "08/11/2026",
+    "nota": 9,
+    "ok": true,
+    "t": 1102
+  }
+]

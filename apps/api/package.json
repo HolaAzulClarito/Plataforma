@@ -1,0 +1,24 @@
+{
+  "name": "@kiron/api",
+  "version": "2.5.0",
+  "private": true,
+  "type": "module",
+  "description": "API de la plataforma Kirón (Hono + Zod). Etapa 1: datos semilla en memoria.",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.11",
+    "@hono/zod-validator": "^0.9.1",
+    "@kiron/shared": "*",
+    "hono": "^4.13.22",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.23.15"
+  }
+}

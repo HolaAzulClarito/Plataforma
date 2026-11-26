@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Distribuidora Veterinaria Centro",
+    "city": "Ciudad de México",
+    "cp": "03100",
+    "km": 2.4,
+    "x": 52,
+    "y": 58,
+    "stock": true
+  },
+  {
+    "name": "Farmacia Veterinaria del Valle",
+    "city": "Ciudad de México",
+    "cp": "03810",
+    "km": 4.1,
+    "x": 47,
+    "y": 64,
+    "stock": true
+  },
+  {
+    "name": "Vet Supply Coyoacán",
+    "city": "Ciudad de México",
+    "cp": "04100",
+    "km": 6.8,
+    "x": 58,
+    "y": 72,
+    "stock": false
+  },
+  {
+    "name": "Grupo Pecuario Satélite",
+    "city": "Naucalpan, Edo. Méx.",
+    "cp": "53100",
+    "km": 14.9,
+    "x": 30,
+    "y": 30,
+    "stock": true
+  },
+  {
+    "name": "Distribuidora Oriente Vet",
+    "city": "Nezahualcóyotl, Edo. Méx.",
+    "cp": "57000",
+    "km": 16.2,
+    "x": 80,
+    "y": 46,
+    "stock": true
+  }
+]

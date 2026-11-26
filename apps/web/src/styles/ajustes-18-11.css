@@ -1,0 +1,51 @@
+/* Ajustes de la reunión del 18/11/2026: carrusel del inicio, menú móvil, ficha técnica.
+   Portado de legacy/assets/app.css (líneas 968-1016). Conserva los nombres de clase del demo. */
+/* ================= Ajustes de la reunión del 18/11/2026 ================= */
+/* Carrusel del inicio */
+.hero-car>.hc-wrap{display:block;position:relative;padding-top:56px;padding-bottom:20px}
+.hc-slide{display:none;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:56px;align-items:center;min-height:452px}
+.hc-slide.on{display:grid;animation:hcIn .45s ease both}
+@keyframes hcIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hc-slide.on{animation:none}}
+.hc-slide h2.h-xl{color:var(--ink);max-width:640px;font-size:clamp(32px,3.7vw,46px);line-height:1.1}
+.hc-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hc-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin-top:18px;font:600 15px var(--f-display);color:var(--ink)}
+.hc-meta .ico{width:18px;height:18px;color:var(--green-700)}
+.hc-meta span{font:400 15px var(--f-body);color:var(--muted)}
+.hero-plate.hc-date{padding:0;background:none;box-shadow:none}
+.hero-plate.hc-date .pp-date{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:var(--r-lg);box-shadow:var(--shadow-pop);background:#fff}
+.hero-plate.hc-date .pp-date .d{font-size:clamp(72px,9vw,120px);line-height:1}
+.hero-plate.hc-course{padding:0;overflow:hidden;background:var(--green-50);color:var(--green-700)}
+.hero-plate.hc-course>.ico{width:72px;height:72px}
+.hero-plate.hc-course img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hc-nav{display:flex;align-items:center;gap:14px;margin-top:26px}
+.hc-arrow{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--border-strong);background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,border-color .2s}
+.hc-arrow:hover{background:var(--green-50);border-color:var(--green-700)}
+.hc-arrow .ico{width:20px;height:20px}
+.hc-dots{display:flex;gap:8px}
+.hc-dots button{width:10px;height:10px;border-radius:50%;border:0;background:var(--border-strong);cursor:pointer;padding:0;transition:width .25s,background .25s}
+.hc-dots button.on{width:28px;border-radius:var(--r-pill);background:var(--green-700)}
+.hero-find .wrap{display:block;padding-top:8px;padding-bottom:44px}
+.hero-find .hero-search{margin-top:0;max-width:680px}
+.hero-find .hero-chips{margin-top:14px}
+@media (max-width:980px){
+  .hero-car>.hc-wrap{padding-top:32px;padding-bottom:12px}
+  .hc-slide{grid-template-columns:1fr;gap:28px;min-height:0}
+  .hc-slide .hero-art{max-width:300px;justify-self:center}
+  .hero-find .wrap{padding-top:8px;padding-bottom:32px}
+}
+/* Menú móvil: subopciones */
+.mnav a.sub{font:600 17px/1.2 var(--f-display);padding:9px 0 9px 18px;color:var(--muted);border-bottom:0}
+.mnav{overflow-y:auto}
+/* Academia y ficha técnica */
+.ac-tabs{margin:0}
+.ft-list{display:grid;gap:10px}
+.ft-list .locked{border-style:solid;background:#fff}
+/* Representantes */
+.repz h3{font-size:24px;margin:0}
+.rep-wa{align-self:flex-start;margin-top:8px;display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border:1.5px solid var(--green-700);color:var(--green-800);background:var(--green-50);font:700 13px var(--f-display);text-decoration:none}
+.rep-wa .ico{width:15px;height:15px}
+.rep-wa:hover{background:var(--green-100)}
+
+@media (max-width:640px){.tbl-wrap .tbl{min-width:680px}}
+
