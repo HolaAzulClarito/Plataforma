@@ -7,6 +7,7 @@ import { useT } from "../../i18n";
 import { cx } from "../../lib/cx";
 import { session, useSession } from "../../state/session";
 import { GatedLink, openLogin } from "../../features/auth";
+import { useMyPoints } from "../../features/panel/useMe";
 import { AC_TABS, VT_TABS } from "../links";
 
 export function DemoBar() {
@@ -120,6 +121,7 @@ function UserMenu() {
     };
   }, [open]);
   const admin = role === "admin";
+  const points = useMyPoints();
   const who = admin ? DEMO_ADMIN : DEMO_USER;
   const close = () => setOpen(false);
   return (
@@ -159,6 +161,7 @@ function UserMenu() {
             </Link>
             <Link role="menuitem" to="/panel/club" onClick={close}>
               <Icon name="gift" /> {t("Club MVZ")}
+              {points !== null ? ` · ${points.toLocaleString("es-MX")} pts` : ""}
             </Link>
           </>
         )}

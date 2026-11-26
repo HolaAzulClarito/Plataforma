@@ -9,6 +9,7 @@ import { useT } from "../../i18n";
 import { scrollToId } from "../../lib/motion";
 import { useNow } from "../../lib/time";
 import { GatedLink } from "../auth";
+import { useMyPoints } from "../panel/useMe";
 import { NextWebinar, webinarIsPast } from "../webinars";
 import { LINKS, SAMPLE_FOLIO } from "../../app/links";
 import { useCategorias, useCursos, usePaises, useProductos, useRepresentantes, useWebinarProximo } from "./data";
@@ -18,6 +19,7 @@ export const HERO_PRODUCT_SLUG = "spirocard-duo-10";
 
 export function Home() {
   const t = useT();
+  const points = useMyPoints();
   const productos = useProductos();
   const categorias = useCategorias();
   const paises = usePaises();
@@ -85,7 +87,7 @@ export function Home() {
               {t("Ver mi panel")} <Icon name="arrow-right" />
             </GatedLink>
           </div>
-          <PanelMock webinar={webinar.data} />
+          <PanelMock webinar={webinar.data} stats={{ points: points ?? undefined }} />
         </div>
       </section>
 

@@ -2,6 +2,7 @@ import { act, fireEvent, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { clearMissing, getMissing } from "../../i18n";
 import { session } from "../../state/session";
+import { CATALOG } from "../../test/fixtures";
 import { mockFetch, renderApp } from "../../test/utils";
 
 const ROUTES = [
@@ -61,12 +62,13 @@ describe("sitio público en inglés", () => {
   it("el registro al webinar confirma con un modal traducido", async () => {
     session.setLang("en");
     session.login("mvz");
-    mockFetch();
+    /* El registro ahora va a la API (POST /api/me/webinars/proximo/registro) y el modal aparece al responder. */
+    mockFetch({ ...CATALOG, "/api/me/webinars/proximo/registro": { slug: "proximo", registrado: true, asistio: false, youtube: null, puntos: 0, constancia: null } });
     clearMissing();
     renderApp("/");
     await settle();
     fireEvent.click(screen.getAllByRole("button", { name: /Register/ })[0]!);
-    expect(screen.getByRole("dialog", { name: "Registration confirmed" })).toBeInTheDocument();
+    expect(await screen.findByRole("dialog", { name: "Registration confirmed" })).toBeInTheDocument();
     expect(getMissing()).toEqual([]);
   });
 });

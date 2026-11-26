@@ -4,9 +4,11 @@
 import type { Lang } from "@kiron/shared";
 import { I18N_EN, I18N_FN, I18N_RX, type Groups, type I18nFnContext } from "./en";
 import { I18N_EXTRA, I18N_EXTRA_RX } from "./extra";
+import { I18N_EXTRA_ACADEMIA, I18N_EXTRA_ACADEMIA_RX } from "./extra-academia";
+import { I18N_EXTRA_ADMIN, I18N_EXTRA_ADMIN_RX } from "./extra-admin";
 
-const DICT: Readonly<Record<string, string>> = { ...I18N_EN, ...I18N_EXTRA };
-const RX: ReadonlyArray<readonly [RegExp, string]> = [...I18N_EXTRA_RX, ...I18N_RX].map(([a, b]) => [new RegExp(a), b] as const);
+const DICT: Readonly<Record<string, string>> = { ...I18N_EN, ...I18N_EXTRA, ...I18N_EXTRA_ACADEMIA, ...I18N_EXTRA_ADMIN };
+const RX: ReadonlyArray<readonly [RegExp, string]> = [...I18N_EXTRA_ADMIN_RX, ...I18N_EXTRA_ACADEMIA_RX, ...I18N_EXTRA_RX, ...I18N_RX].map(([a, b]) => [new RegExp(a), b] as const);
 const HAS_LETTERS = /[A-Za-zÁÉÍÓÚáéíóúñÑ]/;
 
 let cats: readonly string[] = [];
